@@ -24,10 +24,10 @@ public struct CoreDataConfiguration {
     ]
     
     public init(_ modelName: String,
-         fileName: String? = nil,
-         options: [AnyHashable: Any] = defaultOptions,
-         type: String = NSSQLiteStoreType,
-         tryRemakeStoreFile: Bool = false) {
+                fileName: String? = nil,
+                options: [AnyHashable: Any] = defaultOptions,
+                type: String = NSSQLiteStoreType,
+                tryRemakeStoreFile: Bool = false) {
         
         self.modelName = modelName
         self.fileName = fileName ?? "\(modelName).storedata"

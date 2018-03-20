@@ -1,0 +1,644 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F40545D8205E8E060012913F /* Doutaku.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F40545CE205E8E060012913F /* Doutaku.framework */; };
+		F40545DD205E8E060012913F /* DoutakuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40545DC205E8E060012913F /* DoutakuTests.swift */; };
+		F40545DF205E8E060012913F /* Doutaku.h in Headers */ = {isa = PBXBuildFile; fileRef = F40545D1205E8E060012913F /* Doutaku.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F40545FF205E8F3B0012913F /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40545FA205E8F3A0012913F /* Entity.swift */; };
+		F4054600205E8F3B0012913F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40545FB205E8F3A0012913F /* CoreDataManager.swift */; };
+		F4054601205E8F3B0012913F /* ApplicationDirecrories.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40545FC205E8F3A0012913F /* ApplicationDirecrories.swift */; };
+		F4054602205E8F3B0012913F /* CoreDataCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40545FD205E8F3A0012913F /* CoreDataCore.swift */; };
+		F4054603205E8F3B0012913F /* MOCGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40545FE205E8F3B0012913F /* MOCGenerator.swift */; };
+		F405460C205E8FBF0012913F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405460B205E8FBF0012913F /* AppDelegate.swift */; };
+		F405460E205E8FBF0012913F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F405460D205E8FBF0012913F /* Assets.xcassets */; };
+		F4054611205E8FBF0012913F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F405460F205E8FBF0012913F /* MainMenu.xib */; };
+		F4054617205E90110012913F /* Doutaku.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F40545CE205E8E060012913F /* Doutaku.framework */; };
+		F4054618205E90110012913F /* Doutaku.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F40545CE205E8E060012913F /* Doutaku.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F405461E205E96B30012913F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F405461C205E96B30012913F /* Model.xcdatamodeld */; };
+		F4054631205E998F0012913F /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405462F205E998F0012913F /* Person+CoreDataClass.swift */; };
+		F4054632205E998F0012913F /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4054630205E998F0012913F /* Person+CoreDataProperties.swift */; };
+		F4054634205E99DB0012913F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4054633205E99DB0012913F /* Model.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F40545D9205E8E060012913F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F40545C5205E8E060012913F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F40545CD205E8E060012913F;
+			remoteInfo = Doutaku;
+		};
+		F4054619205E90110012913F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F40545C5205E8E060012913F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F40545CD205E8E060012913F;
+			remoteInfo = Doutaku;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F405461B205E90110012913F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F4054618205E90110012913F /* Doutaku.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F40545CE205E8E060012913F /* Doutaku.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Doutaku.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F40545D1205E8E060012913F /* Doutaku.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Doutaku.h; sourceTree = "<group>"; };
+		F40545D2205E8E060012913F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F40545D7205E8E060012913F /* DoutakuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoutakuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F40545DC205E8E060012913F /* DoutakuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoutakuTests.swift; sourceTree = "<group>"; };
+		F40545DE205E8E060012913F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F40545FA205E8F3A0012913F /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		F40545FB205E8F3A0012913F /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		F40545FC205E8F3A0012913F /* ApplicationDirecrories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationDirecrories.swift; sourceTree = "<group>"; };
+		F40545FD205E8F3A0012913F /* CoreDataCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataCore.swift; sourceTree = "<group>"; };
+		F40545FE205E8F3B0012913F /* MOCGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOCGenerator.swift; sourceTree = "<group>"; };
+		F4054609205E8FBE0012913F /* DoutakuApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoutakuApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F405460B205E8FBF0012913F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F405460D205E8FBF0012913F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F4054610205E8FBF0012913F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		F4054612205E8FBF0012913F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4054613205E8FBF0012913F /* DoutakuApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DoutakuApp.entitlements; sourceTree = "<group>"; };
+		F405461D205E96B30012913F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		F405462F205E998F0012913F /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F4054630205E998F0012913F /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F4054633205E99DB0012913F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F40545CA205E8E060012913F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F40545D4205E8E060012913F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F40545D8205E8E060012913F /* Doutaku.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4054606205E8FBE0012913F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4054617205E90110012913F /* Doutaku.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F40545C4205E8E060012913F = {
+			isa = PBXGroup;
+			children = (
+				F40545D0205E8E060012913F /* Doutaku */,
+				F40545DB205E8E060012913F /* DoutakuTests */,
+				F405460A205E8FBF0012913F /* DoutakuApp */,
+				F40545CF205E8E060012913F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F40545CF205E8E060012913F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F40545CE205E8E060012913F /* Doutaku.framework */,
+				F40545D7205E8E060012913F /* DoutakuTests.xctest */,
+				F4054609205E8FBE0012913F /* DoutakuApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F40545D0205E8E060012913F /* Doutaku */ = {
+			isa = PBXGroup;
+			children = (
+				F40545FC205E8F3A0012913F /* ApplicationDirecrories.swift */,
+				F40545FD205E8F3A0012913F /* CoreDataCore.swift */,
+				F40545FB205E8F3A0012913F /* CoreDataManager.swift */,
+				F40545FA205E8F3A0012913F /* Entity.swift */,
+				F40545FE205E8F3B0012913F /* MOCGenerator.swift */,
+				F40545D1205E8E060012913F /* Doutaku.h */,
+				F40545D2205E8E060012913F /* Info.plist */,
+			);
+			path = Doutaku;
+			sourceTree = "<group>";
+		};
+		F40545DB205E8E060012913F /* DoutakuTests */ = {
+			isa = PBXGroup;
+			children = (
+				F40545DC205E8E060012913F /* DoutakuTests.swift */,
+				F40545DE205E8E060012913F /* Info.plist */,
+			);
+			path = DoutakuTests;
+			sourceTree = "<group>";
+		};
+		F405460A205E8FBF0012913F /* DoutakuApp */ = {
+			isa = PBXGroup;
+			children = (
+				F405460B205E8FBF0012913F /* AppDelegate.swift */,
+				F4054633205E99DB0012913F /* Model.swift */,
+				F405462F205E998F0012913F /* Person+CoreDataClass.swift */,
+				F4054630205E998F0012913F /* Person+CoreDataProperties.swift */,
+				F405460F205E8FBF0012913F /* MainMenu.xib */,
+				F405461C205E96B30012913F /* Model.xcdatamodeld */,
+				F405460D205E8FBF0012913F /* Assets.xcassets */,
+				F4054612205E8FBF0012913F /* Info.plist */,
+				F4054613205E8FBF0012913F /* DoutakuApp.entitlements */,
+			);
+			path = DoutakuApp;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		F40545CB205E8E060012913F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F40545DF205E8E060012913F /* Doutaku.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		F40545CD205E8E060012913F /* Doutaku */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F40545E2205E8E060012913F /* Build configuration list for PBXNativeTarget "Doutaku" */;
+			buildPhases = (
+				F40545C9205E8E060012913F /* Sources */,
+				F40545CA205E8E060012913F /* Frameworks */,
+				F40545CB205E8E060012913F /* Headers */,
+				F40545CC205E8E060012913F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Doutaku;
+			productName = Doutaku;
+			productReference = F40545CE205E8E060012913F /* Doutaku.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F40545D6205E8E060012913F /* DoutakuTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F40545E5205E8E060012913F /* Build configuration list for PBXNativeTarget "DoutakuTests" */;
+			buildPhases = (
+				F40545D3205E8E060012913F /* Sources */,
+				F40545D4205E8E060012913F /* Frameworks */,
+				F40545D5205E8E060012913F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F40545DA205E8E060012913F /* PBXTargetDependency */,
+			);
+			name = DoutakuTests;
+			productName = DoutakuTests;
+			productReference = F40545D7205E8E060012913F /* DoutakuTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F4054608205E8FBE0012913F /* DoutakuApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4054614205E8FBF0012913F /* Build configuration list for PBXNativeTarget "DoutakuApp" */;
+			buildPhases = (
+				F4054605205E8FBE0012913F /* Sources */,
+				F4054606205E8FBE0012913F /* Frameworks */,
+				F4054607205E8FBE0012913F /* Resources */,
+				F405461B205E90110012913F /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F405461A205E90110012913F /* PBXTargetDependency */,
+			);
+			name = DoutakuApp;
+			productName = DoutakuApp;
+			productReference = F4054609205E8FBE0012913F /* DoutakuApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F40545C5205E8E060012913F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Hori,Masaki";
+				TargetAttributes = {
+					F40545CD205E8E060012913F = {
+						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
+						ProvisioningStyle = Automatic;
+					};
+					F40545D6205E8E060012913F = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					F4054608205E8FBE0012913F = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F40545C8205E8E060012913F /* Build configuration list for PBXProject "Doutaku" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F40545C4205E8E060012913F;
+			productRefGroup = F40545CF205E8E060012913F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F40545CD205E8E060012913F /* Doutaku */,
+				F40545D6205E8E060012913F /* DoutakuTests */,
+				F4054608205E8FBE0012913F /* DoutakuApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F40545CC205E8E060012913F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F40545D5205E8E060012913F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4054607205E8FBE0012913F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F405460E205E8FBF0012913F /* Assets.xcassets in Resources */,
+				F4054611205E8FBF0012913F /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F40545C9205E8E060012913F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4054601205E8F3B0012913F /* ApplicationDirecrories.swift in Sources */,
+				F4054603205E8F3B0012913F /* MOCGenerator.swift in Sources */,
+				F4054602205E8F3B0012913F /* CoreDataCore.swift in Sources */,
+				F4054600205E8F3B0012913F /* CoreDataManager.swift in Sources */,
+				F40545FF205E8F3B0012913F /* Entity.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F40545D3205E8E060012913F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F40545DD205E8E060012913F /* DoutakuTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4054605205E8FBE0012913F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4054634205E99DB0012913F /* Model.swift in Sources */,
+				F4054632205E998F0012913F /* Person+CoreDataProperties.swift in Sources */,
+				F405460C205E8FBF0012913F /* AppDelegate.swift in Sources */,
+				F405461E205E96B30012913F /* Model.xcdatamodeld in Sources */,
+				F4054631205E998F0012913F /* Person+CoreDataClass.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F40545DA205E8E060012913F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F40545CD205E8E060012913F /* Doutaku */;
+			targetProxy = F40545D9205E8E060012913F /* PBXContainerItemProxy */;
+		};
+		F405461A205E90110012913F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F40545CD205E8E060012913F /* Doutaku */;
+			targetProxy = F4054619205E90110012913F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F405460F205E8FBF0012913F /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4054610205E8FBF0012913F /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F40545E0205E8E060012913F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F40545E1205E8E060012913F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F40545E3205E8E060012913F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Doutaku/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.masakih.Doutaku;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		F40545E4205E8E060012913F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Doutaku/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.masakih.Doutaku;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		F40545E6205E8E060012913F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DoutakuTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.masakih.DoutakuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		F40545E7205E8E060012913F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DoutakuTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.masakih.DoutakuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		F4054615205E8FBF0012913F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DoutakuApp/DoutakuApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DoutakuApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.masakih.DoutakuApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		F4054616205E8FBF0012913F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DoutakuApp/DoutakuApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DoutakuApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.masakih.DoutakuApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F40545C8205E8E060012913F /* Build configuration list for PBXProject "Doutaku" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F40545E0205E8E060012913F /* Debug */,
+				F40545E1205E8E060012913F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F40545E2205E8E060012913F /* Build configuration list for PBXNativeTarget "Doutaku" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F40545E3205E8E060012913F /* Debug */,
+				F40545E4205E8E060012913F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F40545E5205E8E060012913F /* Build configuration list for PBXNativeTarget "DoutakuTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F40545E6205E8E060012913F /* Debug */,
+				F40545E7205E8E060012913F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4054614205E8FBF0012913F /* Build configuration list for PBXNativeTarget "DoutakuApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4054615205E8FBF0012913F /* Debug */,
+				F4054616205E8FBF0012913F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F405461C205E96B30012913F /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F405461D205E96B30012913F /* Model.xcdatamodel */,
+			);
+			currentVersion = F405461D205E96B30012913F /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = F40545C5205E8E060012913F /* Project object */;
+}

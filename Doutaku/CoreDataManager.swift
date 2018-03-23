@@ -39,12 +39,31 @@ public protocol CoreDataProvider {
 /// CoreDataに対するアクセス手段を提供するプロトコル
 public protocol CoreDataAccessor: CoreDataProvider {
     
+    /// NSManagedObjectContextが提供するスレッド上でexcuteを実行する
     func sync(execute: () -> Void)
     func sync<T>(execute: () -> T) -> T
     func async(execute: @escaping () -> Void)
     
+    /// 新しいNSManagedObjectを作成する
+    ///
+    /// - Parameter entity: クラスを特定するためのEntity
+    /// - Returns: 生成が成功すればそのオブジェクトを、失敗すればnilを返す
     func insertNewObject<T>(for entity: Entity<T>) -> T?
+    
+    /// NSManagedObjectを削除する
+    ///
+    /// - Parameter object: 削除するNSManagedObject
     func delete(_ object: NSManagedObject)
+    
+   
+    /// NSManagedObjectを取得する
+    ///
+    /// - Parameters:
+    ///   - entity: 取得するクラスを特定するためのEnetity
+    ///   - sortDescriptors: 戻り値のソート順。nilを指定した場合の順序は不定。
+    ///   - predicate: 取得するオブジェクトを制限するための条件。nilが指定されると全てのオブジェクトを返す。
+    /// - Returns: 条件に合致するオブジェクトの配列
+    /// - Throws: システムが提供するCoreDataのNSError
     func objects<T>(of entity: Entity<T>, sortDescriptors: [NSSortDescriptor]?, predicate: NSPredicate?) throws -> [T]
     
     /// URL RepresentationからNSManagedObjectを取り出す

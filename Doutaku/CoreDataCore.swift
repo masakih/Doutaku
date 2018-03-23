@@ -15,7 +15,6 @@ public struct CoreDataConfiguration {
     let options: [AnyHashable: Any]
     let type: String
     
-    // try remake data file, if model file modified.
     let tryRemakeStoreFile: Bool
     
     public static let defaultOptions: [AnyHashable: Any] = [
@@ -23,6 +22,14 @@ public struct CoreDataConfiguration {
         NSInferMappingModelAutomaticallyOption: true
     ]
     
+    /// イニシャライザ
+    ///
+    /// - Parameters:
+    ///   - modelName: モデルファイルの名前
+    ///   - fileName: データストアファイルのファイル名。nilの時はモデルファイル名に.storedataを付加したものとなる。
+    ///   - options: NSPersistentStoreCoordinatorに対するオプション。デフォルトはdefaultOptions。
+    ///   - type: NSPersistentStoreCoordinatorのストアタイプ。デフォルトはNSSQLiteStoreType。
+    ///   - tryRemakeStoreFile: モデルファイルが変更されていてマイグレーションに失敗した場合、現在のデータストアファイルを削除して作成し直すかどうか。trueなら作成し直す。デフォルトはfalse。
     public init(_ modelName: String,
                 fileName: String? = nil,
                 options: [AnyHashable: Any] = defaultOptions,
@@ -37,6 +44,7 @@ public struct CoreDataConfiguration {
     }
 }
 
+/// 三層式NSManagedObjectContextなどを保持する中枢的struct
 public struct CoreDataCore {
     
     let writerContext: NSManagedObjectContext

@@ -8,6 +8,7 @@
 
 import Cocoa
 
+/// 内部エラー
 enum InnerError: Error {
     
     case saveLocationIsUnuseable
@@ -15,6 +16,7 @@ enum InnerError: Error {
     case couldNotCreateCoordinator(String)
 }
 
+/// 三層式のNSManagedObjectContextを生成する
 final class MOCGenerator {
     
     let config: CoreDataConfiguration

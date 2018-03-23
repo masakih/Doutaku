@@ -8,6 +8,13 @@
 
 import Cocoa
 
+enum InnerError: Error {
+    
+    case saveLocationIsUnuseable
+    case couldNotCreateModel
+    case couldNotCreateCoordinator(String)
+}
+
 final class MOCGenerator {
     
     let config: CoreDataConfiguration
@@ -52,7 +59,7 @@ final class MOCGenerator {
         guard let modelURL = Bundle.main.url(forResource: config.modelName, withExtension: "momd"),
             let model = NSManagedObjectModel(contentsOf: modelURL) else {
                 
-                throw CoreDataError.couldNotCreateModel
+                throw InnerError.couldNotCreateModel
         }
         
         return model
@@ -76,7 +83,7 @@ final class MOCGenerator {
         
         if !checkDirectory(ApplicationDirecrories.support, create: true) {
             
-            throw CoreDataError.saveLocationIsUnuseable
+            throw InnerError.saveLocationIsUnuseable
         }
         
         do {
@@ -102,7 +109,7 @@ final class MOCGenerator {
                 }
             }
             
-            throw CoreDataError.couldNotCreateCoordinator(error.localizedDescription)
+            throw InnerError.couldNotCreateCoordinator(error.localizedDescription)
         }
     }
     

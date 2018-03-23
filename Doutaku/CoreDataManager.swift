@@ -16,9 +16,6 @@ public enum CoreDataManagerType {
 
 public enum CoreDataError: Error {
     
-    case saveLocationIsUnuseable
-    case couldNotCreateModel
-    case couldNotCreateCoordinator(String)
     case couldNotSave(String)
 }
 

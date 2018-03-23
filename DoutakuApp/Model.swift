@@ -8,13 +8,13 @@
 
 import Doutaku
 
-final class Model: CoreDataManager {
+struct Model: CoreDataManager {
     
     static let core = CoreDataCore(CoreDataConfiguration("Model"))
     
     static let `default` = Model(type: .reader)
     
-    required init(type: CoreDataManagerType) {
+    init(type: CoreDataManagerType) {
         
         context = Model.context(for: type)
     }

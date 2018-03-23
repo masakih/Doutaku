@@ -18,7 +18,7 @@ private func supportDirName() -> String {
         ?? "UnknownAppliation"
 }
 
-func localizedAppName() -> String {
+public func localizedAppName() -> String {
     
     guard let name = Bundle.main.localizedInfoDictionary?["CFBundleName"] as? String,
         !name.isEmpty else {
@@ -31,12 +31,12 @@ func localizedAppName() -> String {
 
 public struct ApplicationDirecrories {
     
-    static let support = searchedURL(for: .applicationSupportDirectory)
+    public static let support = searchedURL(for: .applicationSupportDirectory)
         .appendingPathComponent(supportDirName())
     
-    static let documents = searchedURL(for: .documentDirectory)
+    public static let documents = searchedURL(for: .documentDirectory)
     
-    static let pictures = searchedURL(for: .picturesDirectory)
+    public static let pictures = searchedURL(for: .picturesDirectory)
     
     private static func searchedURL(for directory: FileManager.SearchPathDirectory) -> URL {
         

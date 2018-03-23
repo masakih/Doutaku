@@ -45,8 +45,15 @@ public protocol CoreDataAccessor: CoreDataProvider {
     
     func insertNewObject<T>(for entity: Entity<T>) -> T?
     func delete(_ object: NSManagedObject)
-    func object<T>(of entity: Entity<T>, with objectId: NSManagedObjectID) -> T?
     func objects<T>(of entity: Entity<T>, sortDescriptors: [NSSortDescriptor]?, predicate: NSPredicate?) throws -> [T]
+    
+    /// URL RepresentationからNSManagedObjectを取り出す
+    ///
+    /// - Parameters:
+    ///   - entity: クラスを特定するためのEntity
+    ///   - forURIRepresentation: URL representation
+    /// - Returns: URL repretationが示すNSManagedObject
+    func object<T>(of entity: Entity<T>, forURIRepresentation: URL) -> T?
     
     /// NSManagedObectを自身が管理するNSManagedObjectに変換する
     ///
@@ -170,11 +177,6 @@ public extension CoreDataAccessor {
         context.delete(object)
     }
     
-    func object<T>(of entity: Entity<T>, with objectId: NSManagedObjectID) -> T? {
-        
-        return context.object(with: objectId) as? T
-    }
-    
     func objects<T>(of entity: Entity<T>, sortDescriptors: [NSSortDescriptor]? = nil, predicate: NSPredicate? = nil) throws -> [T] {
         
         let req = NSFetchRequest<T>(entityName: entity.name)
@@ -198,6 +200,17 @@ public extension CoreDataAccessor {
         }
         
         return result ?? []
+    }
+    
+    func object<T>(of entity: Entity<T>, forURIRepresentation uri: URL) -> T? {
+        
+        guard let oID = context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: uri) else { return nil }
+        
+        var result: NSManagedObject?
+        sync {
+            result = self.context.object(with: oID)
+        }
+        return result as? T
     }
     
     func exchange<T: NSManagedObject>(_ obj: T) -> T? {

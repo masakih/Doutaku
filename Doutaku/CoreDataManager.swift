@@ -22,17 +22,21 @@ public enum CoreDataError: Error {
     case couldNotSave(String)
 }
 
+
+/// CoreDataにかかるオブジェクトを保持すべきプロトコル
 public protocol CoreDataProvider {
     
     init(type: CoreDataManagerType)
     
     static var core: CoreDataCore { get }
     
+    /// use for ONLY CocoaBindings
     var context: NSManagedObjectContext { get }
     
     func save(errorHandler: @escaping (Error) -> Void)
 }
 
+/// CoreDataに対するアクセス手段を提供するプロトコル
 public protocol CoreDataAccessor: CoreDataProvider {
     
     func sync(execute: () -> Void)
@@ -44,10 +48,14 @@ public protocol CoreDataAccessor: CoreDataProvider {
     func object<T>(of entity: Entity<T>, with objectId: NSManagedObjectID) -> T?
     func objects<T>(of entity: Entity<T>, sortDescriptors: [NSSortDescriptor]?, predicate: NSPredicate?) throws -> [T]
     
-    
+    /// NSManagedObectを自身が管理するNSManagedObjectに変換する
+    ///
+    /// - Parameter object: 変換するNSManagedObject
+    /// - Returns: 自身が管理するNSManagedObject。自身の管理下に該当オブジェクトがなければnilを返す。
     func exchange<T: NSManagedObject>(_ object: T) -> T?
 }
 
+///
 public protocol CoreDataManager: CoreDataAccessor {
     
     static var `default`: Self { get }

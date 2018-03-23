@@ -22,7 +22,6 @@ public enum CoreDataError: Error {
     case couldNotSave(String)
 }
 
-
 /// CoreDataにかかるオブジェクトを保持すべきプロトコル
 public protocol CoreDataProvider {
     
@@ -33,6 +32,11 @@ public protocol CoreDataProvider {
     /// use for ONLY CocoaBindings
     var context: NSManagedObjectContext { get }
     
+    
+    /// 追加編集削除されたデータを保存する
+    ///
+    /// - Parameter errorHandler: 保存中にエラーが発生された時に呼ばれる
+    ///    ErrorはCoreDataError.couldNotSaveあるいはシステムが提供するNSError
     func save(errorHandler: @escaping (Error) -> Void)
 }
 
@@ -54,7 +58,6 @@ public protocol CoreDataAccessor: CoreDataProvider {
     ///
     /// - Parameter object: 削除するNSManagedObject
     func delete(_ object: NSManagedObject)
-    
    
     /// NSManagedObjectを取得する
     ///
@@ -84,11 +87,18 @@ public protocol CoreDataAccessor: CoreDataProvider {
 ///
 public protocol CoreDataManager: CoreDataAccessor {
     
+    /// CoreDataManagerが保持し続けるオブジェクト
+    /// 通常はCoreDataManagerType.readerであるオブジェクトを返す
     static var `default`: Self { get }
     
+    /// データ編集用のオブジェクト
+    ///
+    /// - Returns: データ編集用のオブジェクト
     static func oneTimeEditor() -> Self
 }
 
+/// メインスレッド上でNSApp.presentError(_:)を実行するデフォルトのエラーハンドラー
+///
 public func presentOnMainThread(_ error: Error) {
     
     if Thread.isMainThread {

@@ -40,6 +40,13 @@
 			remoteGlobalIDString = F40545CD205E8E060012913F;
 			remoteInfo = Doutaku;
 		};
+		F4A264E120662F0C004C0A4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F40545C5205E8E060012913F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4054608205E8FBE0012913F;
+			remoteInfo = DoutakuApp;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -110,8 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				F40545D0205E8E060012913F /* Doutaku */,
-				F40545DB205E8E060012913F /* DoutakuTests */,
 				F405460A205E8FBF0012913F /* DoutakuApp */,
+				F40545DB205E8E060012913F /* DoutakuTests */,
 				F40545CF205E8E060012913F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -209,6 +216,7 @@
 			);
 			dependencies = (
 				F40545DA205E8E060012913F /* PBXTargetDependency */,
+				F4A264E220662F0C004C0A4B /* PBXTargetDependency */,
 			);
 			name = DoutakuTests;
 			productName = DoutakuTests;
@@ -252,6 +260,7 @@
 					F40545D6205E8E060012913F = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						TestTargetID = F4054608205E8FBE0012913F;
 					};
 					F4054608205E8FBE0012913F = {
 						CreatedOnToolsVersion = 9.2;
@@ -367,6 +376,11 @@
 			isa = PBXTargetDependency;
 			target = F40545CD205E8E060012913F /* Doutaku */;
 			targetProxy = F4054619205E90110012913F /* PBXContainerItemProxy */;
+		};
+		F4A264E220662F0C004C0A4B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4054608205E8FBE0012913F /* DoutakuApp */;
+			targetProxy = F4A264E120662F0C004C0A4B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -545,6 +559,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = DoutakuTests/Info.plist;
@@ -552,6 +567,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.masakih.DoutakuTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoutakuApp.app/Contents/MacOS/DoutakuApp";
 			};
 			name = Debug;
 		};
@@ -559,6 +575,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = DoutakuTests/Info.plist;
@@ -566,6 +583,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.masakih.DoutakuTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoutakuApp.app/Contents/MacOS/DoutakuApp";
 			};
 			name = Release;
 		};

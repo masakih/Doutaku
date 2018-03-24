@@ -8,6 +8,14 @@
 
 CoreDataを簡単に扱うためのフレームワーク
 
+# 利用法
+
+## Carthage
+[Carthage](https://github.com/Carthage/Carthage)が利用可能です。Cartfileに以下の行を追加してください。
+```
+github "masakih/Doutaku"
+```
+
 # 使い方
 
 ## 準備

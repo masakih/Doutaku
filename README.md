@@ -52,7 +52,7 @@ struct Model: CoreDataManager {
     }
 }
 ```
-データストアファイルは`~/Application Support/{Your Application Name}/Model.storedata`に保存されます。
+データストアファイルは`~/Library/Application Support/{Your Application Name}/Model.storedata`に保存されます。
 
 ## CoreDataManagerの利用
 

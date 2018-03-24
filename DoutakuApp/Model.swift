@@ -14,12 +14,12 @@ struct Model: CoreDataManager {
     
     static let `default` = Model(type: .reader)
     
+    let context: NSManagedObjectContext
+    
     init(type: CoreDataManagerType) {
         
         context = Model.context(for: type)
     }
-    
-    let context: NSManagedObjectContext
 }
 
 extension Model {

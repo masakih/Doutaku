@@ -169,4 +169,30 @@ class DoutakuTests: XCTestCase {
         XCTAssertNotNil(person2)
     }
     
+    func testURIRepresentation() {
+        
+        let model = Model.oneTimeEditor()
+        
+        let uri = model.sync { () -> URL in
+            
+            let person = model.insertNewObject(for: Person.entity)
+            person?.name = testName
+            person?.identifier = testId
+            
+            guard let uri = person?.objectID.uriRepresentation() else {
+                
+                XCTFail("Could not get uriRepresentation")
+                fatalError("Could not get uriRepresentation")
+            }
+            
+            return uri
+        }
+        model.save()
+        
+        let model2 = Model.oneTimeEditor()
+        let person2 = model2.object(of: Person.entity, forURIRepresentation: uri)
+        XCTAssertNotNil(person2)
+        
+    }
+    
 }

@@ -34,4 +34,21 @@ extension Model {
             return (persons?.first?.identifier ?? 0) + 1
         }
     }
+    
+    func person(of name: String) -> Person? {
+        
+        return sync {
+            do {
+                
+                let p = NSPredicate(format: "%K == %@", "name", name)
+                let persons = try objects(of: Person.entity, sortDescriptors: nil, predicate: p)
+                
+                return persons.first
+                
+            } catch {
+                print("Error")
+                return nil
+            }
+        }
+    }
 }

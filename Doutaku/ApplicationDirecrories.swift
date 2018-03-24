@@ -18,17 +18,6 @@ private func supportDirName() -> String {
         ?? "UnknownAppliation"
 }
 
-public func localizedAppName() -> String {
-    
-    guard let name = Bundle.main.localizedInfoDictionary?["CFBundleName"] as? String,
-        !name.isEmpty else {
-            
-            return supportDirName()
-    }
-    
-    return name
-}
-
 public struct ApplicationDirecrories {
     
     public static let support = searchedURL(for: .applicationSupportDirectory)

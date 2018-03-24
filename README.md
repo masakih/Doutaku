@@ -1,8 +1,9 @@
 # Doutaku
 
 [![Language: Swift](https://img.shields.io/badge/Swift-4.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
-[![Platform](https://img.shields.io/badge/Platform-macOS-lightgray.svg)](https://img.shields.io/)
-[![License](https://img.shields.io/github/license/masakih/Doutaku.svg)](https://github.com/masakih/Doutaku/blob/master/LICENSE)
+[![Platform](https://img.shields.io/badge/Platform-macOS-lightgray.svg?style=flat)](https://img.shields.io/)
+[![License](https://img.shields.io/github/license/masakih/Doutaku.svg?style=flat)](https://github.com/masakih/Doutaku/blob/master/LICENSE)
+[![Build status](https://travis-ci.org/masakih/Doutaku.svg?style=flat)](https://travis-ci.org/masakih/Doutaku)
 
 CoreDataを簡単に扱うためのフレームワーク
 

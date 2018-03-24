@@ -123,6 +123,30 @@ class DoutakuTests: XCTestCase {
         
     }
     
+    func testAsync() {
+        
+        let ex = expectation(description: "testAsync")
+        
+        let model = Model.oneTimeEditor()
+        
+        model.async {
+            
+            let person = model.insertNewObject(for: Person.entity)
+            person?.name = self.testName
+            person?.identifier = self.testId
+            
+            model.save()
+            
+            ex.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1, handler: nil)
+        
+        let model2 = Model.oneTimeEditor()
+        let person2 = model2.person(of: testName)
+        XCTAssertNotNil(person2)
+    }
+    
     func testExcahnge() {
         
         let model = Model.oneTimeEditor()

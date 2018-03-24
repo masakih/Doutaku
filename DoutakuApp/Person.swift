@@ -1,5 +1,5 @@
 //
-//  Person+CoreDataProperties.swift
+//  Person.swift
 //  DoutakuApp
 //
 //  Created by Hori,Masaki on 2018/03/18.
@@ -7,20 +7,12 @@
 //
 //
 
-import Foundation
-import CoreData
-
 import Doutaku
 
-extension Person {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Person> {
-        return NSFetchRequest<Person>(entityName: "Person")
-    }
-
+class Person: NSManagedObject {
+    
     @NSManaged public var name: String?
     @NSManaged public var identifier: Int
-
 }
 
 extension Person: EntityProvider {}

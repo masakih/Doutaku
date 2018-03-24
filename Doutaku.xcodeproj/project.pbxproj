@@ -21,8 +21,7 @@
 		F4054617205E90110012913F /* Doutaku.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F40545CE205E8E060012913F /* Doutaku.framework */; };
 		F4054618205E90110012913F /* Doutaku.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F40545CE205E8E060012913F /* Doutaku.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F405461E205E96B30012913F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F405461C205E96B30012913F /* Model.xcdatamodeld */; };
-		F4054631205E998F0012913F /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405462F205E998F0012913F /* Person+CoreDataClass.swift */; };
-		F4054632205E998F0012913F /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4054630205E998F0012913F /* Person+CoreDataProperties.swift */; };
+		F4054632205E998F0012913F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4054630205E998F0012913F /* Person.swift */; };
 		F4054634205E99DB0012913F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4054633205E99DB0012913F /* Model.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,8 +75,7 @@
 		F4054612205E8FBF0012913F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4054613205E8FBF0012913F /* DoutakuApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DoutakuApp.entitlements; sourceTree = "<group>"; };
 		F405461D205E96B30012913F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		F405462F205E998F0012913F /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
-		F4054630205E998F0012913F /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F4054630205E998F0012913F /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		F4054633205E99DB0012913F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,10 +152,9 @@
 		F405460A205E8FBF0012913F /* DoutakuApp */ = {
 			isa = PBXGroup;
 			children = (
-				F405460B205E8FBF0012913F /* AppDelegate.swift */,
 				F4054633205E99DB0012913F /* Model.swift */,
-				F405462F205E998F0012913F /* Person+CoreDataClass.swift */,
-				F4054630205E998F0012913F /* Person+CoreDataProperties.swift */,
+				F4054630205E998F0012913F /* Person.swift */,
+				F405460B205E8FBF0012913F /* AppDelegate.swift */,
 				F405460F205E8FBF0012913F /* MainMenu.xib */,
 				F405461C205E96B30012913F /* Model.xcdatamodeld */,
 				F405460D205E8FBF0012913F /* Assets.xcassets */,
@@ -352,10 +349,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4054634205E99DB0012913F /* Model.swift in Sources */,
-				F4054632205E998F0012913F /* Person+CoreDataProperties.swift in Sources */,
+				F4054632205E998F0012913F /* Person.swift in Sources */,
 				F405460C205E8FBF0012913F /* AppDelegate.swift in Sources */,
 				F405461E205E96B30012913F /* Model.xcdatamodeld in Sources */,
-				F4054631205E998F0012913F /* Person+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

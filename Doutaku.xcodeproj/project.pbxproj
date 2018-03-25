@@ -25,6 +25,8 @@
 		F4054634205E99DB0012913F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4054633205E99DB0012913F /* Model.swift */; };
 		F47AC706206743F600793492 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AC705206743F600793492 /* Predicate.swift */; };
 		F47AC708206747C100793492 /* PredicateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AC707206747C100793492 /* PredicateTests.swift */; };
+		F47AC70A2067C44600793492 /* SortDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AC7092067C44600793492 /* SortDescriptors.swift */; };
+		F47AC70C2067C8EC00793492 /* SortDescriptorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AC70B2067C8EC00793492 /* SortDescriptorsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		F4054633205E99DB0012913F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F47AC705206743F600793492 /* Predicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predicate.swift; sourceTree = "<group>"; };
 		F47AC707206747C100793492 /* PredicateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredicateTests.swift; sourceTree = "<group>"; };
+		F47AC7092067C44600793492 /* SortDescriptors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDescriptors.swift; sourceTree = "<group>"; };
+		F47AC70B2067C8EC00793492 /* SortDescriptorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDescriptorsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,7 @@
 				F40545FA205E8F3A0012913F /* Entity.swift */,
 				F40545FE205E8F3B0012913F /* MOCGenerator.swift */,
 				F47AC705206743F600793492 /* Predicate.swift */,
+				F47AC7092067C44600793492 /* SortDescriptors.swift */,
 				F40545D1205E8E060012913F /* Doutaku.h */,
 				F40545D2205E8E060012913F /* Info.plist */,
 			);
@@ -157,6 +162,7 @@
 			children = (
 				F40545DC205E8E060012913F /* DoutakuTests.swift */,
 				F47AC707206747C100793492 /* PredicateTests.swift */,
+				F47AC70B2067C8EC00793492 /* SortDescriptorsTests.swift */,
 				F40545DE205E8E060012913F /* Info.plist */,
 			);
 			path = DoutakuTests;
@@ -346,6 +352,7 @@
 				F4054601205E8F3B0012913F /* ApplicationDirecrories.swift in Sources */,
 				F47AC706206743F600793492 /* Predicate.swift in Sources */,
 				F4054603205E8F3B0012913F /* MOCGenerator.swift in Sources */,
+				F47AC70A2067C44600793492 /* SortDescriptors.swift in Sources */,
 				F4054602205E8F3B0012913F /* CoreDataCore.swift in Sources */,
 				F4054600205E8F3B0012913F /* CoreDataManager.swift in Sources */,
 				F40545FF205E8F3B0012913F /* Entity.swift in Sources */,
@@ -358,6 +365,7 @@
 			files = (
 				F40545DD205E8E060012913F /* DoutakuTests.swift in Sources */,
 				F47AC708206747C100793492 /* PredicateTests.swift in Sources */,
+				F47AC70C2067C8EC00793492 /* SortDescriptorsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

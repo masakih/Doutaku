@@ -28,8 +28,8 @@ extension Model {
                 
         return sync {
             
-            let sortDesc = NSSortDescriptor(key: #keyPath(Person.identifier), ascending: false)
-            let persons = try? objects(of: Person.entity, sortDescriptors: [sortDesc])
+            let sortDescs = SortDescriptors(.descending(\Person.identifier))
+            let persons = try? objects(of: Person.entity, sortDescriptors: sortDescs)
             
             return (persons?.first?.identifier ?? 0) + 1
         }

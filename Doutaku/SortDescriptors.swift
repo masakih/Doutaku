@@ -75,3 +75,21 @@ public struct SortDescriptors {
         return result
     }
 }
+
+extension SortDescriptors: Equatable {
+    
+    public static func == (lhs: SortDescriptors, rhs: SortDescriptors) -> Bool {
+        
+        return lhs.sortDescriptors == rhs.sortDescriptors
+    }
+    
+    public static func == (lhs: [NSSortDescriptor], rhs: SortDescriptors) -> Bool {
+        
+        return lhs == rhs.sortDescriptors
+    }
+    
+    public static func == (lhs: SortDescriptors, rhs: [NSSortDescriptor]) -> Bool {
+        
+        return lhs.sortDescriptors == rhs
+    }
+}

@@ -104,3 +104,14 @@ extension SortDescriptors: Equatable {
         return lhs.sortDescriptors == rhs
     }
 }
+
+extension Array {
+    
+    public func sorted(using sortDescriptors: SortDescriptors) -> Array {
+        
+        let array = self as NSArray
+        
+        // swiftlint:disable:next force_cast
+        return array.sortedArray(using: sortDescriptors.sortDescriptors) as! Array
+    }
+}

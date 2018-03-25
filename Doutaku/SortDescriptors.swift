@@ -40,21 +40,21 @@ public struct SortDescriptors {
         }
     }
     
-    private(set) var descriptors: [NSSortDescriptor]
+    private(set) var sortDescriptors: [NSSortDescriptor]
     
     public init<Root, Value>(_ descriptor: Descriptor<Root, Value>) {
         
-        self.descriptors = [descriptor.convert()]
+        self.sortDescriptors = [descriptor.convert()]
     }
     
     public mutating func append<Root, Value>(_ descriptor: Descriptor<Root, Value>) {
         
-        self.descriptors += [descriptor.convert()]
+        self.sortDescriptors += [descriptor.convert()]
     }
     
     public mutating func push<Root, Value>(_ descriptor: Descriptor<Root, Value>) {
         
-        self.descriptors = [descriptor.convert()] + self.descriptors
+        self.sortDescriptors = [descriptor.convert()] + self.sortDescriptors
     }
     
     public func appened<Root, Value>(_ descriptor: Descriptor<Root, Value>) -> SortDescriptors {

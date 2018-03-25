@@ -380,4 +380,26 @@ class PredicateTests: XCTestCase {
         let predicate4 = predicate3.negate()
         XCTAssertTrue(array.filtered(using: predicate4).count == 2)
     }
+    
+    func testEquatable() {
+        
+        let predicate01 = Predicate(\PredicateTestClass.string, equalTo: "höGe", options: [.caseInsensitive, .diacriticInsensitive])
+        
+        let predicate02 = Predicate(\PredicateTestClass.string, equalTo: "höGe", options: [.caseInsensitive, .diacriticInsensitive])
+        
+        XCTAssertTrue(predicate01 == predicate02)
+        
+        let predicate03 = Predicate(\PredicateTestClass.string, equalTo: "asdf")
+        XCTAssertTrue(predicate01 != predicate03)
+        
+        let predicate04 = NSPredicate(format: "%K ==[c] %@", "string", "höGe")
+        XCTAssertFalse(predicate01 == predicate04)
+        
+        let predicate05 = NSPredicate(format: "%K ==[cd] %@", "string", "höGe")
+        XCTAssertTrue(predicate01 == predicate05)
+        
+        let predicate06 = Predicate(\PredicateTestClass.string, equalTo: "höGe", options: [.caseInsensitive])
+        XCTAssertTrue(predicate06 == predicate04)
+        
+    }
 }

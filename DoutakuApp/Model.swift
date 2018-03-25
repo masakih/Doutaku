@@ -40,7 +40,7 @@ extension Model {
         return sync {
             do {
                 
-                let p = NSPredicate(format: "%K == %@", "name", name)
+                let p = Predicate(\Person.name, equalTo: name)
                 let persons = try objects(of: Person.entity, sortDescriptors: nil, predicate: p)
                 
                 return persons.first

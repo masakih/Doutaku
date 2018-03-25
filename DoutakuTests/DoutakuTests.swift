@@ -7,6 +7,8 @@
 //
 
 import XCTest
+
+import Doutaku
 @testable import DoutakuApp
 
 
@@ -22,7 +24,7 @@ class DoutakuTests: XCTestCase {
         
         model.sync {
             
-            let p = NSPredicate(format: "%K == %@", "name", testName)
+            let p = Predicate(\Person.name, equalTo: testName)
             
             do {
                 let persons = try model.objects(of: Person.entity, sortDescriptors: nil, predicate: p)
@@ -51,7 +53,7 @@ class DoutakuTests: XCTestCase {
     
     func testThisTest() {
         
-        let p = NSPredicate(format: "%K == %@", "name", testName)
+        let p = Predicate(\Person.name, equalTo: testName)
         let person = try? Model.default.objects(of: Person.entity, predicate: p)
         
         XCTAssertNotNil(person)
@@ -73,7 +75,7 @@ class DoutakuTests: XCTestCase {
         let model2 = Model.oneTimeEditor()
         model2.sync {
             
-            let p = NSPredicate(format: "%K == %@", "name", testName)
+            let p = Predicate(\Person.name, equalTo: testName)
             
             do {
                 let persons = try model2.objects(of: Person.entity, sortDescriptors: nil, predicate: p)

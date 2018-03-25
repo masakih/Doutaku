@@ -64,7 +64,7 @@ public protocol CoreDataAccessor: CoreDataProvider {
     ///   - predicate: 取得するオブジェクトを制限するための条件。nilが指定されると全てのオブジェクトを返す。
     /// - Returns: 条件に合致するオブジェクトの配列
     /// - Throws: システムが提供するCoreDataのNSError
-    func objects<T>(of entity: Entity<T>, sortDescriptors: [NSSortDescriptor]?, predicate: Predicate?) throws -> [T]
+    func objects<T>(of entity: Entity<T>, sortDescriptors: SortDescriptors?, predicate: Predicate?) throws -> [T]
     
     /// URL RepresentationからNSManagedObjectを取り出す
     ///
@@ -203,10 +203,10 @@ public extension CoreDataAccessor {
         context.delete(object)
     }
     
-    func objects<T>(of entity: Entity<T>, sortDescriptors: [NSSortDescriptor]? = nil, predicate: Predicate? = nil) throws -> [T] {
+    func objects<T>(of entity: Entity<T>, sortDescriptors: SortDescriptors? = nil, predicate: Predicate? = nil) throws -> [T] {
         
         let req = NSFetchRequest<T>(entityName: entity.name)
-        req.sortDescriptors = sortDescriptors
+        req.sortDescriptors = sortDescriptors?.sortDescriptors
         req.predicate = predicate?.predicate
         
         var result: [T]?

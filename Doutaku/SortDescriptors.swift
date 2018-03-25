@@ -16,7 +16,7 @@ public struct SortDescriptors {
         
         case descending(KeyPath<Root, Value>)
         
-        case ascendingWithComparator(KeyPath<Root, Value>, Comparator)
+        case ascendingWithComparator(KeyPath<Root, Value>, (Value, Value) -> ComparisonResult)
         
         case descendingWithComparator(KeyPath<Root, Value>, Comparator)
         
@@ -31,11 +31,22 @@ public struct SortDescriptors {
                 return NSSortDescriptor(keyPath: keyPath, ascending: false)
                 
             case let .ascendingWithComparator(keyPath, comparator):
-                return NSSortDescriptor(keyPath: keyPath, ascending: true, comparator: comparator)
+                return NSSortDescriptor(keyPath: keyPath, ascending: true, comparator: convertComparator(comparator))
                 
             case let .descendingWithComparator(keyPath, comparator):
-                return NSSortDescriptor(keyPath: keyPath, ascending: false, comparator: comparator)
+                return NSSortDescriptor(keyPath: keyPath, ascending: false, comparator: convertComparator(comparator))
                 
+            }
+        }
+        
+        internal func convertComparator(_ original: @escaping (Value, Value) -> ComparisonResult) -> (Any, Any) -> ComparisonResult {
+            
+            return { lhs, rhs in
+                
+                guard let lhs = lhs as? Value else { return .orderedDescending }
+                guard let rhs = rhs as? Value else { return .orderedAscending }
+                
+                return original(lhs, rhs)
             }
         }
     }

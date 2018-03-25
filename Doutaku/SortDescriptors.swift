@@ -57,7 +57,7 @@ public struct SortDescriptors {
         self.sortDescriptors = [descriptor.convert()] + self.sortDescriptors
     }
     
-    public func appened<Root, Value>(_ descriptor: Descriptor<Root, Value>) -> SortDescriptors {
+    public func appended<Root, Value>(_ descriptor: Descriptor<Root, Value>) -> SortDescriptors {
         
         var result = self
         

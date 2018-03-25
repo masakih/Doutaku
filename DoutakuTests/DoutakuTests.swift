@@ -15,9 +15,8 @@ class DoutakuTests: XCTestCase {
     let testName = "NameTest"
     let testId = 100_000
     
-    override func setUp() {
-        super.setUp()
-        
+    
+    func removeTestData() {
         
         let model = Model.oneTimeEditor()
         
@@ -37,26 +36,27 @@ class DoutakuTests: XCTestCase {
         model.save()
     }
     
+    override func setUp() {
+        super.setUp()
+        
+        removeTestData()
+    }
+    
     override func tearDown() {
         
-        let model = Model.oneTimeEditor()
-        
-        model.sync {
-            
-            let p = NSPredicate(format: "%K == %@", "name", testName)
-            
-            do {
-                let persons = try model.objects(of: Person.entity, sortDescriptors: nil, predicate: p)
-                
-                persons.forEach(model.delete)
-                
-            } catch {
-                XCTFail("Caught Exception. \(error)")
-            }
-        }
-        model.save()
+       removeTestData()
         
         super.tearDown()
+    }
+    
+    func testThisTest() {
+        
+        let p = NSPredicate(format: "%K == %@", "name", testName)
+        let person = try? Model.default.objects(of: Person.entity, predicate: p)
+        
+        XCTAssertNotNil(person)
+        
+        XCTAssertTrue(person!.isEmpty)
     }
     
     func testInsertAndFetch() {
@@ -185,9 +185,10 @@ class DoutakuTests: XCTestCase {
                 fatalError("Could not get uriRepresentation")
             }
             
+            model.save()
+            
             return uri
         }
-        model.save()
         
         let model2 = Model.oneTimeEditor()
         let person2 = model2.object(of: Person.entity, forURIRepresentation: uri)

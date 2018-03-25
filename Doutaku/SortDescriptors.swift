@@ -18,7 +18,7 @@ public struct SortDescriptors {
         
         case ascendingWithComparator(KeyPath<Root, Value>, (Value, Value) -> ComparisonResult)
         
-        case descendingWithComparator(KeyPath<Root, Value>, Comparator)
+        case descendingWithComparator(KeyPath<Root, Value>, (Value, Value) -> ComparisonResult)
         
         internal func convert() -> NSSortDescriptor {
             

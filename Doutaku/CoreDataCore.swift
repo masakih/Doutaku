@@ -64,7 +64,6 @@ public struct CoreDataCore {
             
         } catch {
             
-            NSApplication.shared.presentError(error)
             fatalError("CoreDataCore: can not initialize. \(error)")
         }
     }

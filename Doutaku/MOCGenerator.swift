@@ -12,6 +12,7 @@ import Cocoa
 enum InnerError: Error {
     
     case saveLocationIsUnuseable
+    case modelFileNotFound
     case couldNotCreateModel
     case couldNotCreateCoordinator(String)
 }
@@ -58,10 +59,13 @@ final class MOCGenerator {
     // MARK: - NSManagedObjectContext and ...
     private func createModel() throws -> NSManagedObjectModel {
         
-        guard let modelURL = Bundle.main.url(forResource: config.modelName, withExtension: "momd"),
-            let model = NSManagedObjectModel(contentsOf: modelURL) else {
-                
-                throw InnerError.couldNotCreateModel
+        guard let modelURL = Bundle.main.url(forResource: config.modelName, withExtension: "momd") else {
+            
+            throw InnerError.modelFileNotFound
+        }
+        guard let model = NSManagedObjectModel(contentsOf: modelURL) else {
+            
+            throw InnerError.couldNotCreateModel
         }
         
         return model

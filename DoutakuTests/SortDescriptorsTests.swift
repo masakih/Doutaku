@@ -84,4 +84,28 @@ class SortDescriptorsTests: XCTestCase {
         XCTAssertEqual(new02.first?.string, "")
         XCTAssertEqual(new02.last?.string, "iiii")
     }
+    
+    func testEquatable() {
+        
+        let s00 = SortDescriptors(.ascending(\SortDescriptorsTestClass.string))
+        let s01 = SortDescriptors(.ascending(\SortDescriptorsTestClass.string))
+        
+        XCTAssertTrue(s00 == s01)
+        
+        let s02 = SortDescriptors(.descending(\SortDescriptorsTestClass.string))
+        XCTAssertFalse(s00 == s02)
+        
+        let s03 = SortDescriptors(.ascending(\SortDescriptorsTestClass.integer))
+        XCTAssertFalse(s00 == s03)
+        
+        let ns00 = NSSortDescriptor(keyPath: \SortDescriptorsTestClass.string, ascending: true)
+        XCTAssertTrue(s00 == [ns00])
+        
+        let ns01 = NSSortDescriptor(keyPath: \SortDescriptorsTestClass.integer, ascending: true)
+        XCTAssertFalse(s00 == [ns01])
+        
+        let ns02 = NSSortDescriptor(keyPath: \SortDescriptorsTestClass.string, ascending: false)
+        XCTAssertFalse(s00 == [ns02])
+        
+    }
 }

@@ -8,80 +8,83 @@
 
 import Foundation
 
+private func convertComparator<Value>(_ original: @escaping (Value, Value) -> ComparisonResult) -> (Any, Any) -> ComparisonResult {
+    
+    return { lhs, rhs in
+        
+        guard let lhs = lhs as? Value else { return .orderedDescending }
+        guard let rhs = rhs as? Value else { return .orderedAscending }
+        
+        return original(lhs, rhs)
+    }
+}
+
 public struct SortDescriptors {
     
-    public enum Order<Root, Value> {
+    internal private(set) var sortDescriptors: [NSSortDescriptor]
+    
+    public init<Root, Value>(keyPath: KeyPath<Root, Value>, ascending: Bool) {
         
-        case ascending(KeyPath<Root, Value>)
-        
-        case descending(KeyPath<Root, Value>)
-        
-        case ascendingWithComparator(KeyPath<Root, Value>, (Value, Value) -> ComparisonResult)
-        
-        case descendingWithComparator(KeyPath<Root, Value>, (Value, Value) -> ComparisonResult)
-        
-        internal func convert() -> NSSortDescriptor {
-            
-            switch self {
-                
-            case let .ascending(keyPath):
-                return NSSortDescriptor(keyPath: keyPath, ascending: true)
-                
-            case let .descending(keyPath):
-                return NSSortDescriptor(keyPath: keyPath, ascending: false)
-                
-            case let .ascendingWithComparator(keyPath, comparator):
-                return NSSortDescriptor(keyPath: keyPath, ascending: true, comparator: convertComparator(comparator))
-                
-            case let .descendingWithComparator(keyPath, comparator):
-                return NSSortDescriptor(keyPath: keyPath, ascending: false, comparator: convertComparator(comparator))
-                
-            }
-        }
-        
-        internal func convertComparator(_ original: @escaping (Value, Value) -> ComparisonResult) -> (Any, Any) -> ComparisonResult {
-            
-            return { lhs, rhs in
-                
-                guard let lhs = lhs as? Value else { return .orderedDescending }
-                guard let rhs = rhs as? Value else { return .orderedAscending }
-                
-                return original(lhs, rhs)
-            }
-        }
+        self.sortDescriptors = [NSSortDescriptor(keyPath: keyPath, ascending: ascending)]
     }
     
-    private(set) var sortDescriptors: [NSSortDescriptor]
-    
-    public init<Root, Value>(_ descriptor: Order<Root, Value>) {
+    public init<Root, Value>(keyPath: KeyPath<Root, Value>, ascending: Bool, comparator: @escaping (Value, Value) -> ComparisonResult) {
         
-        self.sortDescriptors = [descriptor.convert()]
+        self.sortDescriptors = [NSSortDescriptor(keyPath: keyPath, ascending: ascending, comparator: convertComparator(comparator))]
     }
     
-    public mutating func append<Root, Value>(_ descriptor: Order<Root, Value>) {
+    public mutating func append<Root, Value>(keyPath: KeyPath<Root, Value>, ascending: Bool) {
         
-        self.sortDescriptors += [descriptor.convert()]
+        self.sortDescriptors += [NSSortDescriptor(keyPath: keyPath, ascending: ascending)]
     }
     
-    public mutating func push<Root, Value>(_ descriptor: Order<Root, Value>) {
+    public mutating func append<Root, Value>(keyPath: KeyPath<Root, Value>, ascending: Bool, comparator: @escaping (Value, Value) -> ComparisonResult) {
         
-        self.sortDescriptors = [descriptor.convert()] + self.sortDescriptors
+        self.sortDescriptors += [NSSortDescriptor(keyPath: keyPath, ascending: ascending, comparator: convertComparator(comparator))]
     }
     
-    public func appended<Root, Value>(_ descriptor: Order<Root, Value>) -> SortDescriptors {
+    public mutating func push<Root, Value>(keyPath: KeyPath<Root, Value>, ascending: Bool) {
+        
+        self.sortDescriptors = [NSSortDescriptor(keyPath: keyPath, ascending: ascending)] + self.sortDescriptors
+    }
+    
+    public mutating func push<Root, Value>(keyPath: KeyPath<Root, Value>, ascending: Bool, comparator: @escaping (Value, Value) -> ComparisonResult) {
+        
+        self.sortDescriptors = [NSSortDescriptor(keyPath: keyPath, ascending: ascending, comparator: convertComparator(comparator))] + self.sortDescriptors
+    }
+    
+    public func appended<Root, Value>(keyPath: KeyPath<Root, Value>, ascending: Bool) -> SortDescriptors {
         
         var result = self
         
-        result.append(descriptor)
+        result.append(keyPath: keyPath, ascending: ascending)
         
         return result
     }
     
-    public func pushed<Root, Value>(_ descriptor: Order<Root, Value>) -> SortDescriptors {
+    public func appended<Root, Value>(keyPath: KeyPath<Root, Value>, ascending: Bool, comparator: @escaping (Value, Value) -> ComparisonResult) -> SortDescriptors {
         
         var result = self
         
-        result.push(descriptor)
+        result.append(keyPath: keyPath, ascending: ascending, comparator: comparator)
+        
+        return result
+    }
+    
+    public func pushed<Root, Value>(keyPath: KeyPath<Root, Value>, ascending: Bool) -> SortDescriptors {
+        
+        var result = self
+        
+        result.push(keyPath: keyPath, ascending: ascending)
+        
+        return result
+    }
+    
+    public func pushed<Root, Value>(keyPath: KeyPath<Root, Value>, ascending: Bool, comparator: @escaping (Value, Value) -> ComparisonResult) -> SortDescriptors {
+        
+        var result = self
+        
+        result.push(keyPath: keyPath, ascending: ascending, comparator: comparator)
         
         return result
     }

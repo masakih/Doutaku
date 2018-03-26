@@ -41,61 +41,79 @@ class SortDescriptorsTests: XCTestCase {
     
     func testInitialize() {
         
-        _ = SortDescriptors(.ascending(\SortDescriptorsTestClass.integer))
+        _ = SortDescriptors(keyPath: \SortDescriptorsTestClass.integer, ascending: true)
         
-        _ = SortDescriptors(.descending(\SortDescriptorsTestClass.string))
+        _ = SortDescriptors(keyPath: \SortDescriptorsTestClass.string, ascending: false)
         
-        _ = SortDescriptors(.ascendingWithComparator(\SortDescriptorsTestClass.float, { (lhs: Float, rhs: Float) -> ComparisonResult in .orderedSame }))
+        _ = SortDescriptors(keyPath: \SortDescriptorsTestClass.float,ascending: true, comparator: { (lhs: Float, rhs: Float) -> ComparisonResult in .orderedSame })
         
-        _ = SortDescriptors(.descendingWithComparator(\SortDescriptorsTestClass.double, { _, _ in .orderedDescending }))
+        _ = SortDescriptors(keyPath: \SortDescriptorsTestClass.double, ascending: false, comparator: { _, _ in .orderedDescending })
         
-        _ = SortDescriptors(.ascendingWithComparator(\SortDescriptorsTestClass.string, { lhs, rhs in lhs.compare(rhs) }))
+        _ = SortDescriptors(keyPath: \SortDescriptorsTestClass.string, ascending: true, comparator: { lhs, rhs in lhs.compare(rhs) })
     }
     
     func testCreate() {
         
-        let s00 = SortDescriptors(.ascending(\SortDescriptorsTestClass.integer))
+        let s00 = SortDescriptors(keyPath: \SortDescriptorsTestClass.integer, ascending: true)
         let ns00 = NSSortDescriptor(key: #keyPath(SortDescriptorsTestClass.integer), ascending: true)
         XCTAssertTrue(s00 == [ns00])
         
-        let s01 = s00.pushed(.descending(\SortDescriptorsTestClass.float))
+        let s01 = s00.pushed(keyPath: \SortDescriptorsTestClass.float, ascending: false)
         let ns01 = NSSortDescriptor(key: #keyPath(SortDescriptorsTestClass.float), ascending: false)
         XCTAssertTrue(s01 == [ns01, ns00])
         
-        let s02 = s00.appended(.descending(\SortDescriptorsTestClass.double))
+        let s02 = s00.appended(keyPath: \SortDescriptorsTestClass.double, ascending: false)
         let ns02 = NSSortDescriptor(key: #keyPath(SortDescriptorsTestClass.double), ascending: false)
         XCTAssertTrue(s02 == [ns00, ns02])
     }
     
     func testSort() {
         
-        let s00 = SortDescriptors(.ascending(\SortDescriptorsTestClass.string))
+        let s00 = SortDescriptors(keyPath: \SortDescriptorsTestClass.string, ascending: true)
         let new00 = array.sorted(using: s00)
         XCTAssertEqual(new00.first?.string, "")
         XCTAssertEqual(new00.last?.string, "iiii")
         
-        let s01 = SortDescriptors(.descending(\SortDescriptorsTestClass.integer))
+        let s01 = SortDescriptors(keyPath: \SortDescriptorsTestClass.integer, ascending: false)
         let new01 = array.sorted(using: s01)
         XCTAssertEqual(new01.first?.integer, 3)
         XCTAssertEqual(new01.last?.integer, 0)
         
-        let s02 = SortDescriptors(.ascendingWithComparator(\SortDescriptorsTestClass.string, { lhs, rhs in lhs.compare(rhs) }))
+        let s02 = SortDescriptors(keyPath: \SortDescriptorsTestClass.string, ascending: true, comparator: { lhs, rhs in lhs.compare(rhs) })
         let new02 = array.sorted(using: s02)
         XCTAssertEqual(new02.first?.string, "")
         XCTAssertEqual(new02.last?.string, "iiii")
+        
+        let s03 = s00.pushed(keyPath: \SortDescriptorsTestClass.float, ascending: true) { (lhs, rhs) -> ComparisonResult in
+            if lhs > rhs { return .orderedAscending }
+            else if lhs == rhs { return .orderedSame }
+            else { return .orderedDescending }
+        }
+        let new03 = array.sorted(using: s03)
+        XCTAssertEqual(new03.first?.string, "aaa")
+        XCTAssertEqual(new03.last?.string, "iiii")
+        
+        let s04 = s00.appended(keyPath: \SortDescriptorsTestClass.double, ascending: true) { (lhs, rhs) -> ComparisonResult in
+            if lhs > rhs { return .orderedAscending }
+            else if lhs == rhs { return .orderedSame }
+            else { return .orderedDescending }
+        }
+        let new04 = array.sorted(using: s04)
+        XCTAssertEqual(new04.first?.string, "")
+        XCTAssertEqual(new04.last?.string, "iiii")
     }
     
     func testEquatable() {
         
-        let s00 = SortDescriptors(.ascending(\SortDescriptorsTestClass.string))
-        let s01 = SortDescriptors(.ascending(\SortDescriptorsTestClass.string))
+        let s00 = SortDescriptors(keyPath: \SortDescriptorsTestClass.string, ascending: true)
+        let s01 = SortDescriptors(keyPath: \SortDescriptorsTestClass.string, ascending: true)
         
         XCTAssertTrue(s00 == s01)
         
-        let s02 = SortDescriptors(.descending(\SortDescriptorsTestClass.string))
+        let s02 = SortDescriptors(keyPath: \SortDescriptorsTestClass.string, ascending: false)
         XCTAssertFalse(s00 == s02)
         
-        let s03 = SortDescriptors(.ascending(\SortDescriptorsTestClass.integer))
+        let s03 = SortDescriptors(keyPath: \SortDescriptorsTestClass.integer, ascending: true)
         XCTAssertFalse(s00 == s03)
         
         let ns00 = NSSortDescriptor(keyPath: \SortDescriptorsTestClass.string, ascending: true)

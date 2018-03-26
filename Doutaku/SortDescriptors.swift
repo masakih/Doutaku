@@ -10,7 +10,7 @@ import Foundation
 
 public struct SortDescriptors {
     
-    public enum Descriptor<Root, Value> {
+    public enum Order<Root, Value> {
         
         case ascending(KeyPath<Root, Value>)
         
@@ -53,22 +53,22 @@ public struct SortDescriptors {
     
     private(set) var sortDescriptors: [NSSortDescriptor]
     
-    public init<Root, Value>(_ descriptor: Descriptor<Root, Value>) {
+    public init<Root, Value>(_ descriptor: Order<Root, Value>) {
         
         self.sortDescriptors = [descriptor.convert()]
     }
     
-    public mutating func append<Root, Value>(_ descriptor: Descriptor<Root, Value>) {
+    public mutating func append<Root, Value>(_ descriptor: Order<Root, Value>) {
         
         self.sortDescriptors += [descriptor.convert()]
     }
     
-    public mutating func push<Root, Value>(_ descriptor: Descriptor<Root, Value>) {
+    public mutating func push<Root, Value>(_ descriptor: Order<Root, Value>) {
         
         self.sortDescriptors = [descriptor.convert()] + self.sortDescriptors
     }
     
-    public func appended<Root, Value>(_ descriptor: Descriptor<Root, Value>) -> SortDescriptors {
+    public func appended<Root, Value>(_ descriptor: Order<Root, Value>) -> SortDescriptors {
         
         var result = self
         
@@ -77,7 +77,7 @@ public struct SortDescriptors {
         return result
     }
     
-    public func pushed<Root, Value>(_ descriptor: Descriptor<Root, Value>) -> SortDescriptors {
+    public func pushed<Root, Value>(_ descriptor: Order<Root, Value>) -> SortDescriptors {
         
         var result = self
         

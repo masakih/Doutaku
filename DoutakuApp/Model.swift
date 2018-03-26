@@ -28,7 +28,7 @@ extension Model {
                 
         return sync {
             
-            let sortDescs = SortDescriptors(.descending(\Person.identifier))
+            let sortDescs = SortDescriptors(keyPath: \Person.identifier, ascending: true)
             let persons = try? objects(of: Person.entity, sortDescriptors: sortDescs)
             
             return (persons?.first?.identifier ?? 0) + 1

@@ -100,12 +100,15 @@ class SortDescriptorsTests: XCTestCase {
         
         let ns00 = NSSortDescriptor(keyPath: \SortDescriptorsTestClass.string, ascending: true)
         XCTAssertTrue(s00 == [ns00])
+        XCTAssertTrue([ns00] == s00)
         
         let ns01 = NSSortDescriptor(keyPath: \SortDescriptorsTestClass.integer, ascending: true)
         XCTAssertFalse(s00 == [ns01])
+        XCTAssertFalse([ns01] == s00)
         
         let ns02 = NSSortDescriptor(keyPath: \SortDescriptorsTestClass.string, ascending: false)
         XCTAssertFalse(s00 == [ns02])
+        XCTAssertFalse([ns02] == s00)
         
     }
 }

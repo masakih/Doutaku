@@ -5,6 +5,7 @@
 [![License](https://img.shields.io/github/license/masakih/Doutaku.svg?style=flat)](https://github.com/masakih/Doutaku/blob/master/LICENSE)
 [![Build status](https://travis-ci.org/masakih/Doutaku.svg?style=flat)](https://travis-ci.org/masakih/Doutaku)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![GitHub release](https://img.shields.io/github/release/masakih/Doutaku.svg)](https://github.com/masakih/Doutaku/releases/latest)
 
 CoreDataを簡単に扱うためのフレームワーク
 

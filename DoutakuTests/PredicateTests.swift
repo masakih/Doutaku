@@ -21,12 +21,18 @@ class PredicateTestClass: NSObject {
     
     @objc let string: String
     
-    init(_ integer: Int, _ float: Float, _ double: Double, _ string: String) {
+    @objc let bool: Bool
+    
+    @objc let val: String?
+    
+    init(_ integer: Int, _ float: Float, _ double: Double, _ string: String, bool: Bool = false, val: String? = "") {
         
         self.integer = integer
         self.float = float
         self.double = double
         self.string = string
+        self.bool = bool
+        self.val = val
     }
 }
 
@@ -319,6 +325,28 @@ class PredicateTests: XCTestCase {
         
         let predicate2 = Predicate(\PredicateTestClass.integer, between: 2, and: 5)
         XCTAssertTrue(array.filtered(using: predicate2).count == 0)
+    }
+    
+    func testNilAndBool() {
+        
+        let array2 = [
+            PredicateTestClass(0, 0, 0, "", bool: true, val: nil),
+            PredicateTestClass(1, 1, 1, "hoge", bool: true, val: nil),
+            PredicateTestClass(1, 1, 1, "hoge", bool: false, val: "")
+        ]
+        
+        let predicate01 = Predicate(true: \PredicateTestClass.bool)
+        XCTAssertTrue(array2.filtered(using: predicate01).count == 2)
+        
+        let predicate02 = Predicate(false: \PredicateTestClass.bool)
+        XCTAssertTrue(array2.filtered(using: predicate02).count == 1)
+        
+        
+        let predicate03 = Predicate(isNil: \PredicateTestClass.val)
+        XCTAssertTrue(array2.filtered(using: predicate03).count == 2)
+        
+        let predicate04 = Predicate(isNotNil: \PredicateTestClass.val)
+        XCTAssertTrue(array2.filtered(using: predicate04).count == 1)
     }
     
     func testAnd() {

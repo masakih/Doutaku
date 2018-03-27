@@ -105,6 +105,51 @@ public struct Predicate {
         self.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fitst.predicate, second.predicate])
     }
     
+    ///
+    public init<Root, Value>(isNil keyPath: KeyPath<Root, Value>) {
+        
+        let left = NSExpression(forKeyPath: keyPath)
+        let right = NSExpression(forConstantValue: nil)
+        
+        self.predicate = NSComparisonPredicate(leftExpression: left,
+                                               rightExpression: right,
+                                               modifier: .direct,
+                                               type: .equalTo)
+    }
+    
+    public init<Root, Value>(isNotNil keyPath: KeyPath<Root, Value>) {
+        
+        let left = NSExpression(forKeyPath: keyPath)
+        let right = NSExpression(forConstantValue: nil)
+        
+        self.predicate = NSComparisonPredicate(leftExpression: left,
+                                               rightExpression: right,
+                                               modifier: .direct,
+                                               type: .notEqualTo)
+    }
+    
+    public init<Root, Value>(`true` keyPath: KeyPath<Root, Value>) {
+        
+        let left = NSExpression(forKeyPath: keyPath)
+        let right = NSExpression(forConstantValue: true)
+        
+        self.predicate = NSComparisonPredicate(leftExpression: left,
+                                               rightExpression: right,
+                                               modifier: .direct,
+                                               type: .equalTo)
+    }
+    
+    public init<Root, Value>(`false` keyPath: KeyPath<Root, Value>) {
+        
+        let left = NSExpression(forKeyPath: keyPath)
+        let right = NSExpression(forConstantValue: true)
+        
+        self.predicate = NSComparisonPredicate(leftExpression: left,
+                                               rightExpression: right,
+                                               modifier: .direct,
+                                               type: .notEqualTo)
+    }
+    
 }
 
 extension Predicate {
@@ -154,6 +199,14 @@ extension Predicate {
     public func evaluate(with object: NSObject?) -> Bool {
         
         return predicate.evaluate(with: object)
+    }
+}
+
+extension Predicate: CustomStringConvertible {
+    
+    public var description: String {
+        
+        return predicate.description
     }
 }
 

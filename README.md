@@ -97,10 +97,10 @@ extension Model {
                 
         return sync {
             
-            let sortDesc = NSSortDescriptor(key: #keyPath(Person.identifier), ascending: false)
+            let sortDesc = SortDescriptors(key: \Person.identifier, ascending: false)
             
             // すべてのPersonをidentifierの順で取得
-            let persons = try? objects(of: Person.entity, sortDescriptors: [sortDesc])
+            let persons = try? objects(of: Person.entity, sortDescriptors: sortDesc)
             
             return (persons?.first?.identifier ?? 0) + 1
         }

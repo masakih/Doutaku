@@ -115,6 +115,15 @@ class SortDescriptorsTests: XCTestCase {
         XCTAssertTrue(s02 == [ns00, ns01])
     }
     
+    func testGetKeyPath() {
+        
+        let s00 = SortDescriptors(keyPath: \SortDescriptorsTestClass.string, ascending: true)
+        XCTAssertEqual(s00.keyPaths.first, \SortDescriptorsTestClass.string)
+        
+        let s01 = SortDescriptors(keyPath: \SortDescriptorsTestClass.float, ascending: true)
+        XCTAssertEqual(s01.keyPaths.first, \SortDescriptorsTestClass.float)
+    }
+    
     func testEquatable() {
         
         let s00 = SortDescriptors(keyPath: \SortDescriptorsTestClass.string, ascending: true)

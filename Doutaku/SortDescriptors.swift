@@ -33,6 +33,11 @@ public struct SortDescriptors {
         self.sortDescriptors = [NSSortDescriptor(keyPath: keyPath, ascending: ascending, comparator: convertComparator(comparator))]
     }
     
+    public var keyPaths: [AnyKeyPath] {
+        
+        return sortDescriptors.flatMap { $0.keyPath }
+    }
+    
     public mutating func append<Root, Value>(keyPath: KeyPath<Root, Value>, ascending: Bool) {
         
         self.sortDescriptors += [NSSortDescriptor(keyPath: keyPath, ascending: ascending)]

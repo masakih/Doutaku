@@ -88,6 +88,14 @@ public struct SortDescriptors {
         
         return result
     }
+    
+    public func union(_ other: SortDescriptors) -> SortDescriptors {
+        
+        var new = self
+        new.sortDescriptors += other.sortDescriptors
+        
+        return new
+    }
 }
 
 extension SortDescriptors: Equatable {

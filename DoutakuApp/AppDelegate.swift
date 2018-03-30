@@ -44,7 +44,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         model.sync {
             selections
-                .flatMap(model.exchange)
+                .compactMap(model.exchange)
                 .forEach(model.delete)
         }
         

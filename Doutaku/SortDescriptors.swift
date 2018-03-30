@@ -35,7 +35,7 @@ public struct SortDescriptors {
     
     public var keyPaths: [AnyKeyPath] {
         
-        return sortDescriptors.flatMap { $0.keyPath }
+        return sortDescriptors.compactMap { $0.keyPath }
     }
     
     public mutating func append<Root, Value>(keyPath: KeyPath<Root, Value>, ascending: Bool) {

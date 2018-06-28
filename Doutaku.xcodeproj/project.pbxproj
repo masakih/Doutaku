@@ -23,6 +23,7 @@
 		F405461E205E96B30012913F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F405461C205E96B30012913F /* Model.xcdatamodeld */; };
 		F4054632205E998F0012913F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4054630205E998F0012913F /* Person.swift */; };
 		F4054634205E99DB0012913F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4054633205E99DB0012913F /* Model.swift */; };
+		F44F9FD420E3C00D0014E8C2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F9FD320E3C00D0014E8C2 /* Result.swift */; };
 		F47AC706206743F600793492 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AC705206743F600793492 /* Predicate.swift */; };
 		F47AC708206747C100793492 /* PredicateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AC707206747C100793492 /* PredicateTests.swift */; };
 		F47AC70A2067C44600793492 /* SortDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AC7092067C44600793492 /* SortDescriptors.swift */; };
@@ -88,6 +89,7 @@
 		F405461D205E96B30012913F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F4054630205E998F0012913F /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		F4054633205E99DB0012913F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		F44F9FD320E3C00D0014E8C2 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		F47AC705206743F600793492 /* Predicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predicate.swift; sourceTree = "<group>"; };
 		F47AC707206747C100793492 /* PredicateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredicateTests.swift; sourceTree = "<group>"; };
 		F47AC7092067C44600793492 /* SortDescriptors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDescriptors.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				F40545FB205E8F3A0012913F /* CoreDataManager.swift */,
 				F40545FA205E8F3A0012913F /* Entity.swift */,
 				F40545FE205E8F3B0012913F /* MOCGenerator.swift */,
+				F44F9FD320E3C00D0014E8C2 /* Result.swift */,
 				F47AC705206743F600793492 /* Predicate.swift */,
 				F47AC7092067C44600793492 /* SortDescriptors.swift */,
 				F40545D1205E8E060012913F /* Doutaku.h */,
@@ -355,6 +358,7 @@
 				F47AC70A2067C44600793492 /* SortDescriptors.swift in Sources */,
 				F4054602205E8F3B0012913F /* CoreDataCore.swift in Sources */,
 				F4054600205E8F3B0012913F /* CoreDataManager.swift in Sources */,
+				F44F9FD420E3C00D0014E8C2 /* Result.swift in Sources */,
 				F40545FF205E8F3B0012913F /* Entity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

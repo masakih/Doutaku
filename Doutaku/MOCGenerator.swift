@@ -71,7 +71,10 @@ final class MOCGenerator {
         return model
     }
     
-    private func isMigrationError(_ code: Int) -> Bool {
+    private func isMigrationError(_ error: NSError) -> Bool {
+        
+        if error.domain != NSCocoaErrorDomain { return false }
+        
         return [
             NSPersistentStoreIncompatibleVersionHashError,
             NSMigrationError,
@@ -82,7 +85,7 @@ final class MOCGenerator {
             NSMigrationManagerSourceStoreError,
             NSMigrationManagerDestinationStoreError,
             NSEntityMigrationPolicyError
-        ].contains(code)
+        ].contains(error.code)
     }
     
     private func createCoordinator(_ model: NSManagedObjectModel) throws -> NSPersistentStoreCoordinator {
@@ -92,30 +95,32 @@ final class MOCGenerator {
             throw InnerError.saveLocationIsUnuseable
         }
         
-        do {
+        let r = Result({ try makeCoordinator(model) }).recover { result in
             
-            return try makeCoordinator(model)
-            
-        } catch let error as NSError {
-            
-            // Data Modelが更新されていたらストアファイルを削除してもう一度
-            if config.tryRemakeStoreFile,
-                error.domain == NSCocoaErrorDomain,
-                isMigrationError(error.code) {
+            switch result {
                 
-                removeDataFile()
+            case .value: return result
                 
-                do {
+            case let .error(error as NSError):
+                
+                // Data Modelが更新されていたらストアファイルを削除してもう一度
+                if config.tryRemakeStoreFile, isMigrationError(error) {
                     
-                    return try makeCoordinator(model)
+                    removeDataFile()
                     
-                } catch {
-                    
-                    print("Fail to create NSPersistentStoreCoordinator twice.")
+                    return Result({ try makeCoordinator(model) })
                 }
+                
+                return result
             }
+        }
+        
+        switch r {
             
-            throw InnerError.couldNotCreateCoordinator(error.localizedDescription)
+        case let .value(result): return result
+        
+        case let .error(error): throw InnerError.couldNotCreateCoordinator(error.localizedDescription)
+            
         }
     }
     

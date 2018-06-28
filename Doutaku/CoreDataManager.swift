@@ -209,23 +209,15 @@ public extension CoreDataAccessor {
         req.sortDescriptors = sortDescriptors?.sortDescriptors
         req.predicate = predicate?.predicate
         
-        var result: [T]?
-        var caughtError: Error?
-        sync {
-            do {
-                
-                result = try self.context.fetch(req)
-            } catch {
-                
-                caughtError = error
-            }
-        }
-        if let error = caughtError {
-            
-            throw error
-        }
         
-        return result ?? []
+        let result: Result<[T]> = sync { Result({ try self.context.fetch(req) }) }
+        
+        switch result {
+            
+        case let .value(r): return r
+            
+        case let .error(error): throw error
+        }
     }
     
     func object<T>(of entity: Entity<T>, forURIRepresentation uri: URL) -> T? {

@@ -232,20 +232,12 @@ public extension CoreDataAccessor {
         
         guard let oID = context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: uri) else { return nil }
         
-        var result: NSManagedObject?
-        sync {
-            result = self.context.object(with: oID)
-        }
-        return result as? T
+        return sync { self.context.object(with: oID) as? T }
     }
     
     func exchange<T: NSManagedObject>(_ obj: T) -> T? {
         
-        var result: NSManagedObject?
-        sync {
-            result = self.context.object(with: obj.objectID)
-        }
-        return result as? T
+        return sync { self.context.object(with: obj.objectID) as? T }
     }
 }
 

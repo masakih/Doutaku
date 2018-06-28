@@ -33,7 +33,7 @@ final class MOCGenerator {
         let coordinator = try createCoordinator(model)
         let moc = createContext(coordinator)
         
-        return (model: model, coordinator: coordinator, moc: moc)
+        return (model, coordinator, moc)
     }
     
     private func removeDataFile() {

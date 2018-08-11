@@ -51,7 +51,7 @@ class DoutakuTests: XCTestCase {
         super.tearDown()
     }
     
-    func testThisTest() {
+    func test1ThisTest() {
         
         let p = Predicate(\Person.name, equalTo: testName)
         let person = try? Model.default.objects(of: Person.entity, predicate: p)
@@ -137,38 +137,41 @@ class DoutakuTests: XCTestCase {
             person?.name = self.testName
             person?.identifier = self.testId
             
-            model.save()
+            model.save { error in
+                
+                XCTFail("################# \(error) #################")
+            }
             
             ex.fulfill()
         }
         
-        waitForExpectations(timeout: 1, handler: nil)
+        waitForExpectations(timeout: 1)
         
-        let model2 = Model.oneTimeEditor()
-        let person2 = model2.person(of: testName)
+        let model2 = Model.default
+        let person2 = model2.sync { model2.person(of: testName) }
         XCTAssertNotNil(person2)
+        XCTAssertFalse(person2!.isFault)
+        XCTAssertEqual(person2!.name, testName)
+        XCTAssertEqual(person2!.identifier, testId)
     }
     
     func testExcahnge() {
         
         let model = Model.oneTimeEditor()
         
-        model.sync {
+        let person = model.sync { () -> Person? in
             let person = model.insertNewObject(for: Person.entity)
             person?.name = testName
             person?.identifier = testId
+            
+            return person
         }
         model.save()
         
-        guard let person = Model.default.person(of: testName) else {
-            
-            XCTFail("Can not get Person by name)")
-            return
-        }
-        
-        let model2 = Model.oneTimeEditor()
-        let person2 = model2.exchange(person)
-        XCTAssertNotNil(person2)
+        let person2 = Model.default.exchange(person!)
+        XCTAssertFalse(person2!.isFault)
+        XCTAssertEqual(person2!.name, testName)
+        XCTAssertEqual(person2!.identifier, testId)
     }
     
     func testURIRepresentation() {
@@ -192,10 +195,10 @@ class DoutakuTests: XCTestCase {
             return uri
         }
         
-        let model2 = Model.oneTimeEditor()
-        let person2 = model2.object(of: Person.entity, forURIRepresentation: uri)
-        XCTAssertNotNil(person2)
-        
+        let person2 = Model.default.object(of: Person.entity, forURIRepresentation: uri)
+        XCTAssertFalse(person2!.isFault)
+        XCTAssertEqual(person2!.name, testName)
+        XCTAssertEqual(person2!.identifier, testId)
     }
     
 }

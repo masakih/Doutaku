@@ -229,7 +229,7 @@ public extension CoreDataAccessor {
     
     func exchange<T: NSManagedObject>(_ obj: T) -> T? {
         
-        return sync { self.context.object(with: obj.objectID) as? T }
+        return sync { (try? self.context.existingObject(with: obj.objectID)) as? T }
     }
 }
 

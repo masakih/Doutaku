@@ -147,12 +147,13 @@ class DoutakuTests: XCTestCase {
         
         waitForExpectations(timeout: 1)
         
-        let model2 = Model.default
-        let person2 = model2.sync { model2.person(of: testName) }
-        XCTAssertNotNil(person2)
-        XCTAssertFalse(person2!.isFault)
-        XCTAssertEqual(person2!.name, testName)
-        XCTAssertEqual(person2!.identifier, testId)
+        let model2 = Model.oneTimeEditor()
+        model2.sync {
+            let person2 = model2.person(of: testName)
+            XCTAssertEqual(person2?.name, testName)
+            XCTAssertEqual(person2?.identifier, testId)
+        }
+        
     }
     
     func testExcahnge() {
@@ -168,10 +169,12 @@ class DoutakuTests: XCTestCase {
         }
         model.save()
         
-        let person2 = Model.default.exchange(person!)
-        XCTAssertFalse(person2!.isFault)
-        XCTAssertEqual(person2!.name, testName)
-        XCTAssertEqual(person2!.identifier, testId)
+        let model2 = Model.oneTimeEditor()
+        model2.sync {
+            let person2 = model2.exchange(person!)
+            XCTAssertEqual(person2?.name, testName)
+            XCTAssertEqual(person2?.identifier, testId)
+        }
     }
     
     func testURIRepresentation() {
@@ -195,10 +198,12 @@ class DoutakuTests: XCTestCase {
             return uri
         }
         
-        let person2 = Model.default.object(of: Person.entity, forURIRepresentation: uri)
-        XCTAssertFalse(person2!.isFault)
-        XCTAssertEqual(person2!.name, testName)
-        XCTAssertEqual(person2!.identifier, testId)
+        let model2 = Model.oneTimeEditor()
+        model2.sync {
+            let person2 = model2.object(of: Person.entity, forURIRepresentation: uri)
+            XCTAssertEqual(person2?.name, testName)
+            XCTAssertEqual(person2?.identifier, testId)
+        }
     }
     
 }

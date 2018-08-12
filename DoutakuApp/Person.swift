@@ -15,4 +15,4 @@ class Person: NSManagedObject {
     @NSManaged public var identifier: Int
 }
 
-extension Person: EntityProvider {}
+extension Person: Entity {}

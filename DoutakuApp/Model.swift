@@ -29,7 +29,7 @@ extension Model {
         return sync {
             
             let sortDescs = SortDescriptors(keyPath: \Person.identifier, ascending: true)
-            let persons = try? objects(of: Person.entity, sortDescriptors: sortDescs)
+            let persons = try? objects(of: Person.self, sortDescriptors: sortDescs)
             
             return (persons?.first?.identifier ?? 0) + 1
         }
@@ -41,7 +41,7 @@ extension Model {
             do {
                 
                 let p = Predicate(\Person.name, equalTo: name)
-                let persons = try objects(of: Person.entity, sortDescriptors: nil, predicate: p)
+                let persons = try objects(of: Person.self, sortDescriptors: nil, predicate: p)
                 
                 return persons.first
                 

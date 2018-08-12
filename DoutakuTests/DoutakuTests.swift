@@ -27,7 +27,7 @@ class DoutakuTests: XCTestCase {
             let p = Predicate(\Person.name, equalTo: testName)
             
             do {
-                let persons = try model.objects(of: Person.entity, sortDescriptors: nil, predicate: p)
+                let persons = try model.objects(of: Person.self, sortDescriptors: nil, predicate: p)
                 
                 persons.forEach(model.delete)
                 
@@ -54,7 +54,7 @@ class DoutakuTests: XCTestCase {
     func test1ThisTest() {
         
         let p = Predicate(\Person.name, equalTo: testName)
-        let person = try? Model.default.objects(of: Person.entity, predicate: p)
+        let person = try? Model.default.objects(of: Person.self, predicate: p)
         
         XCTAssertNotNil(person)
         
@@ -66,7 +66,7 @@ class DoutakuTests: XCTestCase {
         let model = Model.oneTimeEditor()
         
         model.sync {
-            let person = model.insertNewObject(for: Person.entity)
+            let person = model.insertNewObject(for: Person.self)
             person?.name = testName
             person?.identifier = testId
         }
@@ -78,7 +78,7 @@ class DoutakuTests: XCTestCase {
             let p = Predicate(\Person.name, equalTo: testName)
             
             do {
-                let persons = try model2.objects(of: Person.entity, sortDescriptors: nil, predicate: p)
+                let persons = try model2.objects(of: Person.self, sortDescriptors: nil, predicate: p)
                 
                 XCTAssertFalse(persons.isEmpty)
                 
@@ -109,7 +109,7 @@ class DoutakuTests: XCTestCase {
         let model = Model.oneTimeEditor()
         
         model.sync {
-            let person = model.insertNewObject(for: Person.entity)
+            let person = model.insertNewObject(for: Person.self)
             person?.name = testName
             person?.identifier = testId
         }
@@ -133,7 +133,7 @@ class DoutakuTests: XCTestCase {
         
         model.async {
             
-            let person = model.insertNewObject(for: Person.entity)
+            let person = model.insertNewObject(for: Person.self)
             person?.name = self.testName
             person?.identifier = self.testId
             
@@ -161,7 +161,7 @@ class DoutakuTests: XCTestCase {
         let model = Model.oneTimeEditor()
         
         let person = model.sync { () -> Person? in
-            let person = model.insertNewObject(for: Person.entity)
+            let person = model.insertNewObject(for: Person.self)
             person?.name = testName
             person?.identifier = testId
             
@@ -183,7 +183,7 @@ class DoutakuTests: XCTestCase {
         
         let uri = model.sync { () -> URL in
             
-            let person = model.insertNewObject(for: Person.entity)
+            let person = model.insertNewObject(for: Person.self)
             person?.name = testName
             person?.identifier = testId
             
@@ -200,7 +200,7 @@ class DoutakuTests: XCTestCase {
         
         let model2 = Model.oneTimeEditor()
         model2.sync {
-            let person2 = model2.object(of: Person.entity, forURIRepresentation: uri)
+            let person2 = model2.object(of: Person.self, forURIRepresentation: uri)
             XCTAssertEqual(person2?.name, testName)
             XCTAssertEqual(person2?.identifier, testId)
         }

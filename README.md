@@ -43,10 +43,10 @@ class Person: NSManagedObject {
     @NSManaged public var identifier: Int
 }
 
-extension Person: EntityProvider {}
+extension Person: Entity {}
 ```
 
-Doutakuをインポートし EntityProvider プロトコルに準拠させます。
+Doutakuをインポートし Entity プロトコルに準拠させます。
 
 
 ### CoreDataManagerのサブクラスの作成
@@ -82,7 +82,7 @@ defer { model.save() }
 model.sync {
   
   // 新しいPersonをインサート
-  let person = model.insertNewObject(for: Person.entity)
+  let person = model.insertNewObject(for: Person.self)
   
   person?.name = name
   person?.identifier = model.nextIdentifier()
@@ -101,7 +101,7 @@ extension Model {
             let sortDesc = SortDescriptors(keyPath: \Person.identifier, ascending: true)
             
             // すべてのPersonをidentifierの順で取得
-            let persons = try? objects(of: Person.entity, sortDescriptors: sortDescs)
+            let persons = try? objects(of: Person.self, sortDescriptors: sortDescs)
             
             return (persons?.first?.identifier ?? 0) + 1
         }

@@ -47,9 +47,9 @@ public protocol CoreDataAccessor: CoreDataProvider {
     
     /// 新しいNSManagedObjectを作成する
     ///
-    /// - Parameter entity: クラスを特定するためのEntity
+    /// - Parameter type: クラスを特定するためのEntity type
     /// - Returns: 生成が成功すればそのオブジェクトを、失敗すればnilを返す
-    func insertNewObject<T>(for entity: Entity<T>) -> T?
+    func insertNewObject<ResultType: Entity>(for type: ResultType.Type) -> ResultType?
     
     /// NSManagedObjectを削除する
     ///
@@ -59,26 +59,26 @@ public protocol CoreDataAccessor: CoreDataProvider {
     /// NSManagedObjectを取得する
     ///
     /// - Parameters:
-    ///   - entity: 取得するクラスを特定するためのEnetity
+    ///   - type: 取得するクラスを特定するためのEnetity type
     ///   - sortDescriptors: 戻り値のソート順。nilを指定した場合の順序は不定。
     ///   - predicate: 取得するオブジェクトを制限するための条件。nilが指定されると全てのオブジェクトを返す。
     /// - Returns: 条件に合致するオブジェクトの配列
     /// - Throws: システムが提供するCoreDataのNSError
-    func objects<T>(of entity: Entity<T>, sortDescriptors: SortDescriptors?, predicate: Predicate?) throws -> [T]
+    func objects<ResultType: Entity>(of type: ResultType.Type, sortDescriptors: SortDescriptors?, predicate: Predicate?) throws -> [ResultType]
     
     /// URL RepresentationからNSManagedObjectを取り出す
     ///
     /// - Parameters:
-    ///   - entity: クラスを特定するためのEntity
+    ///   - type: クラスを特定するためのEntity type
     ///   - forURIRepresentation: URL representation
     /// - Returns: URL repretationが示すNSManagedObject
-    func object<T>(of entity: Entity<T>, forURIRepresentation: URL) -> T?
+    func object<ResultType: Entity>(of type: ResultType.Type, forURIRepresentation: URL) -> ResultType?
     
     /// NSManagedObectを自身が管理するNSManagedObjectに変換する
     ///
     /// - Parameter object: 変換するNSManagedObject
     /// - Returns: 自身が管理するNSManagedObject。自身の管理下に該当オブジェクトがなければnilを返す。
-    func exchange<T: NSManagedObject>(_ object: T) -> T?
+    func exchange<ResultType: NSManagedObject>(_ object: ResultType) -> ResultType?
 }
 
 ///
@@ -133,7 +133,7 @@ public extension CoreDataProvider {
                 return
             }
             
-            parent.perform {
+            parent.performAndWait {
                 
                 do {
                     
@@ -193,9 +193,9 @@ public extension CoreDataAccessor {
         self.context.perform(work)
     }
     
-    func insertNewObject<T>(for entity: Entity<T>) -> T? {
+    func insertNewObject<ResultType: Entity>(for type: ResultType.Type) -> ResultType? {
         
-        return NSEntityDescription.insertNewObject(forEntityName: entity.name, into: context) as? T
+        return NSEntityDescription.insertNewObject(forEntityName: type.entityName, into: context) as? ResultType
     }
     
     func delete(_ object: NSManagedObject) {
@@ -203,14 +203,14 @@ public extension CoreDataAccessor {
         context.delete(object)
     }
     
-    func objects<T>(of entity: Entity<T>, sortDescriptors: SortDescriptors? = nil, predicate: Predicate? = nil) throws -> [T] {
+    func objects<ResultType: Entity>(of type: ResultType.Type, sortDescriptors: SortDescriptors? = nil, predicate: Predicate? = nil) throws -> [ResultType] {
         
-        let req = NSFetchRequest<T>(entityName: entity.name)
+        let req = NSFetchRequest<ResultType>(entityName: type.entityName)
         req.sortDescriptors = sortDescriptors?.sortDescriptors
         req.predicate = predicate?.predicate
         
         
-        let result: Result<[T]> = sync { Result({ try self.context.fetch(req) }) }
+        let result: Result<[ResultType]> = sync { Result({ try self.context.fetch(req) }) }
         
         switch result {
             
@@ -220,16 +220,16 @@ public extension CoreDataAccessor {
         }
     }
     
-    func object<T>(of entity: Entity<T>, forURIRepresentation uri: URL) -> T? {
+    func object<ResultType: Entity>(of type: ResultType.Type, forURIRepresentation uri: URL) -> ResultType? {
         
         guard let oID = context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: uri) else { return nil }
         
-        return sync { self.context.object(with: oID) as? T }
+        return sync { self.context.object(with: oID) as? ResultType }
     }
     
-    func exchange<T: NSManagedObject>(_ obj: T) -> T? {
+    func exchange<ResultType: NSManagedObject>(_ obj: ResultType) -> ResultType? {
         
-        return sync { self.context.object(with: obj.objectID) as? T }
+        return sync { self.context.object(with: obj.objectID) as? ResultType }
     }
 }
 

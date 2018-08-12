@@ -8,31 +8,14 @@
 
 import CoreData
 
-/// CoreData EntityのEntity名とClassを紐づけるstruct
-public struct Entity<T: NSManagedObject> {
-    
-    let name: String
-}
-
-/// NSManagedObjectからEntity<T>を取り出すためのprotocol
-public protocol EntityProvider {
-    
-    associatedtype ObjectType: NSManagedObject = Self
+/// CoreData EntityのEntity名とClassを紐づけるprotocol
+public protocol Entity where Self: NSManagedObject {
     
     static var entityName: String { get }
-    static var entity: Entity<ObjectType> { get }
-}
-
-public extension EntityProvider {
-    
-    static var entity: Entity<ObjectType> {
-        
-        return Entity<ObjectType>(name: entityName)
-    }
 }
 
 /// クラス名と同じEntity名を返す
-public extension NSManagedObject {
+public extension Entity {
     
-    class var entityName: String { return String(describing: self) }
+    static var entityName: String { return String(describing: self) }
 }

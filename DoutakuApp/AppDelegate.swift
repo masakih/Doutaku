@@ -26,7 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         defer { model.save() }
         
         model.sync {
-            let person = model.insertNewObject(for: Person.entity)
+            let person = model.insertNewObject(for: Person.self)
             
             person?.name = name
             person?.identifier = model.nextIdentifier()

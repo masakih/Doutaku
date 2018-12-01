@@ -41,7 +41,6 @@ public protocol CoreDataProvider {
 public protocol CoreDataAccessor: CoreDataProvider {
     
     /// NSManagedObjectContextが提供するスレッド上でexcuteを実行する
-    func sync(execute: () -> Void)
     func sync<T>(execute: () -> T) -> T
     func async(execute: @escaping () -> Void)
     
@@ -174,17 +173,14 @@ public extension CoreDataProvider {
 
 public extension CoreDataAccessor {
     
-    func sync(execute work: () -> Void) {
-        
-        self.context.performAndWait(work)
-    }
-    
     func sync<T>(execute work: () -> T) -> T {
         
         var value: T!
-        sync {
+        self.context.performAndWait {
+            
             value = work()
         }
+        
         return value
     }
     

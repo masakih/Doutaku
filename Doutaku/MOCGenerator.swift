@@ -95,7 +95,7 @@ final class MOCGenerator {
             throw InnerError.saveLocationIsUnuseable
         }
         
-        let r = Result({ try makeCoordinator(model) }).recover { result in
+        let r = Result(catching: { try makeCoordinator(model) }).recover { result in
             
             switch result {
                 
@@ -108,7 +108,7 @@ final class MOCGenerator {
                     
                     removeDataFile()
                     
-                    return Result({ try makeCoordinator(model) })
+                    return Result(catching: { try makeCoordinator(model) })
                 }
                 
                 return result

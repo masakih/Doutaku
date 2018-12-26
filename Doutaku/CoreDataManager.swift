@@ -206,7 +206,7 @@ public extension CoreDataAccessor {
         req.predicate = predicate?.predicate
         
         
-        let result: Result<[ResultType]> = sync { Result({ try self.context.fetch(req) }) }
+        let result: Result<[ResultType], Error> = sync { Result(catching: { try self.context.fetch(req) }) }
         
         switch result {
             

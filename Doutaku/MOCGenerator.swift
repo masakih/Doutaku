@@ -95,31 +95,25 @@ final class MOCGenerator {
             throw InnerError.saveLocationIsUnuseable
         }
         
-        let r = Result(catching: { try makeCoordinator(model) }).recover { result in
-            
-            switch result {
-                
-            case .value: return result
-                
-            case let .error(error as NSError):
+        let r = Result { try makeCoordinator(model) }
+            .flatMapError { (error) -> Result<NSPersistentStoreCoordinator, Error> in
                 
                 // Data Modelが更新されていたらストアファイルを削除してもう一度
-                if config.tryRemakeStoreFile, isMigrationError(error) {
+                if config.tryRemakeStoreFile, isMigrationError(error as NSError) {
                     
                     removeDataFile()
                     
-                    return Result(catching: { try makeCoordinator(model) })
+                    return Result { try makeCoordinator(model) }
                 }
                 
-                return result
-            }
+                return .failure(error)
         }
         
         switch r {
             
-        case let .value(result): return result
+        case let .success(result): return result
         
-        case let .error(error): throw InnerError.couldNotCreateCoordinator(error.localizedDescription)
+        case let .failure(error): throw InnerError.couldNotCreateCoordinator(error.localizedDescription)
             
         }
     }

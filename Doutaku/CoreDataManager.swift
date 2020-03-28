@@ -210,9 +210,9 @@ public extension CoreDataAccessor {
         
         switch result {
             
-        case let .value(r): return r
+        case let .success(r): return r
             
-        case let .error(error): throw error
+        case let .failure(error): throw error
         }
     }
     

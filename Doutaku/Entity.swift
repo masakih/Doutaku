@@ -9,7 +9,7 @@
 import CoreData
 
 /// CoreData EntityのEntity名とClassを紐づけるprotocol
-public protocol Entity where Self: NSManagedObject {
+public protocol Entity: NSManagedObject {
     
     static var entityName: String { get }
 }

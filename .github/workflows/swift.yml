@@ -9,6 +9,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Install Swiftlint
+      run: brew install swiftlint
+    - name: Swiftlint
+      run: swiftlint
     - name: Select Xcode version
       run: sudo xcode-select -s '/Applications/Xcode_11.3.app/Contents/Developer'
     - name: Build

@@ -3,7 +3,7 @@
 [![Language: Swift](https://img.shields.io/badge/Swift-5.1-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![Platform](https://img.shields.io/badge/Platform-macOS-lightgray.svg?style=flat)](https://img.shields.io/)
 [![License](https://img.shields.io/github/license/masakih/Doutaku.svg?style=flat)](https://github.com/masakih/Doutaku/blob/master/LICENSE)
-[![Build status](https://travis-ci.org/masakih/Doutaku.svg?style=flat)](https://travis-ci.org/masakih/Doutaku)
+[![Build status](https://img.shields.io/github/workflow/status/masakih/Doutaku/Swift)](https://github.com/masakih/Doutaku/actions?query=workflow%3ASwift)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![GitHub release](https://img.shields.io/github/release/masakih/Doutaku.svg)](https://github.com/masakih/Doutaku/releases/latest)
 

@@ -88,6 +88,7 @@
 		F405461D205E96B30012913F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F4054630205E998F0012913F /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		F4054633205E99DB0012913F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		F475521D24A833780013D3DD /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		F47AC705206743F600793492 /* Predicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predicate.swift; sourceTree = "<group>"; };
 		F47AC707206747C100793492 /* PredicateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredicateTests.swift; sourceTree = "<group>"; };
 		F47AC7092067C44600793492 /* SortDescriptors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDescriptors.swift; sourceTree = "<group>"; };
@@ -124,9 +125,10 @@
 		F40545C4205E8E060012913F = {
 			isa = PBXGroup;
 			children = (
-				F40545D0205E8E060012913F /* Doutaku */,
+				F475521D24A833780013D3DD /* Package.swift */,
+				F40545D0205E8E060012913F /* Sources */,
 				F405460A205E8FBF0012913F /* DoutakuApp */,
-				F40545DB205E8E060012913F /* DoutakuTests */,
+				F40545DB205E8E060012913F /* Tests */,
 				F40545CF205E8E060012913F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -141,7 +143,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F40545D0205E8E060012913F /* Doutaku */ = {
+		F40545D0205E8E060012913F /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				F40545FC205E8F3A0012913F /* ApplicationDirecrories.swift */,
@@ -154,10 +156,10 @@
 				F40545D1205E8E060012913F /* Doutaku.h */,
 				F40545D2205E8E060012913F /* Info.plist */,
 			);
-			path = Doutaku;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		F40545DB205E8E060012913F /* DoutakuTests */ = {
+		F40545DB205E8E060012913F /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				F40545DC205E8E060012913F /* DoutakuTests.swift */,
@@ -165,7 +167,7 @@
 				F47AC70B2067C8EC00793492 /* SortDescriptorsTests.swift */,
 				F40545DE205E8E060012913F /* Info.plist */,
 			);
-			path = DoutakuTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		F405460A205E8FBF0012913F /* DoutakuApp */ = {
@@ -542,7 +544,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Doutaku/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MARKETING_VERSION = 1.1;
@@ -566,7 +568,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Doutaku/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MARKETING_VERSION = 1.1;
@@ -584,7 +586,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = DoutakuTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.masakih.DoutakuTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -600,7 +602,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = DoutakuTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.masakih.DoutakuTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
